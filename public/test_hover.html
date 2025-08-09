@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>測試日期格式和數據</title>
+    <script>
+        async function testData() {
+            try {
+                // 測試correlation數據
+                const corrResponse = await fetch('/data/correlation_analysis.json');
+                const corrData = await corrResponse.json();
+                console.log('Correlation數據:', Object.keys(corrData));
+                
+                // 測試歷史數據
+                const histResponse = await fetch('/data/complete_historical_baseline.json');
+                const histData = await histResponse.json();
+                console.log('歷史數據週次:', Object.keys(histData.data));
+                
+                // 測試日期格式化
+                const firstWeek = Object.keys(histData.data)[0];
+                const weekData = histData.data[firstWeek];
+                const baselineDate = weekData.baseline_date;
+                
+                const weekStart = new Date(baselineDate);
+                const weekEnd = new Date(weekStart);
+                weekEnd.setDate(weekStart.getDate() + 6);
+                
+                const formatDate = (date) => `${date.getMonth() + 1}/${date.getDate()}`;
+                const weekRange = `${formatDate(weekStart)} ~ ${formatDate(weekEnd)}`;
+                
+                document.getElementById('result').innerHTML = `
+                    <h3>測試結果:</h3>
+                    <p>Correlation數據庫: ${Object.keys(corrData).length} 項目</p>
+                    <p>歷史數據週次: ${Object.keys(histData.data).length} 週</p>
+                    <p>第一週: ${firstWeek} (${baselineDate})</p>
+                    <p>格式化顯示: ${weekRange}</p>
+                    <h4>所有週次:</h4>
+                    <ul>
+                        ${Object.keys(histData.data).map(week => {
+                            const wData = histData.data[week];
+                            const start = new Date(wData.baseline_date);
+                            const end = new Date(start);
+                            end.setDate(start.getDate() + 6);
+                            const range = `${formatDate(start)} ~ ${formatDate(end)}`;
+                            return `<li>${week} -> ${range}</li>`;
+                        }).join('')}
+                    </ul>
+                `;
+                
+            } catch (error) {
+                document.getElementById('result').innerHTML = `<p style="color:red">錯誤: ${error}</p>`;
+            }
+        }
+        
+        window.onload = testData;
+    </script>
+</head>
+<body>
+    <h1>測試頁面</h1>
+    <div id="result">載入中...</div>
+</body>
+</html>

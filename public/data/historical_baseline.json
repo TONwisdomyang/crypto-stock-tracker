@@ -1,0 +1,181 @@
+{
+  "generated_at": "2025-08-07T19:20:56.472567+08:00",
+  "timezone": "Asia/Taipei",
+  "baseline_time": "08:00",
+  "data": {
+    "2025-W24": {
+      "week_start": "2025-06-16T08:00:00+08:00",
+      "baseline_date": "2025-06-16",
+      "companies": {
+        "MSTR": {
+          "company_name": "MicroStrategy Inc.",
+          "stock_price": 387.64,
+          "coin": "BTC",
+          "coin_price": 105554.49,
+          "coin_id": "bitcoin"
+        },
+        "VAPE": {
+          "company_name": "VapeJet Inc.",
+          "stock_price": 8.29,
+          "coin": "BNB",
+          "coin_price": 648.2,
+          "coin_id": "binancecoin"
+        },
+        "VERB": {
+          "company_name": "VERB Technology Company Inc.",
+          "stock_price": 7.0,
+          "coin": "TON",
+          "coin_price": 2.98,
+          "coin_id": "the-open-network"
+        }
+      }
+    },
+    "2025-W25": {
+      "week_start": "2025-06-23T08:00:00+08:00",
+      "baseline_date": "2025-06-23",
+      "companies": {
+        "MSTR": {
+          "company_name": "MicroStrategy Inc.",
+          "stock_price": 362.7,
+          "coin": "BTC",
+          "coin_price": 100852.58,
+          "coin_id": "bitcoin"
+        },
+        "VAPE": {
+          "company_name": "VapeJet Inc.",
+          "stock_price": 7.11,
+          "coin": "BNB",
+          "coin_price": 615.92,
+          "coin_id": "binancecoin"
+        },
+        "VERB": {
+          "company_name": "VERB Technology Company Inc.",
+          "stock_price": 6.49,
+          "coin": "TON",
+          "coin_price": 2.73,
+          "coin_id": "the-open-network"
+        }
+      }
+    },
+    "2025-W26": {
+      "week_start": "2025-06-30T08:00:00+08:00",
+      "baseline_date": "2025-06-30",
+      "companies": {
+        "MSTR": {
+          "company_name": "MicroStrategy Inc.",
+          "stock_price": 389.75,
+          "coin": "BTC",
+          "coin_price": 108396.62,
+          "coin_id": "bitcoin"
+        },
+        "VAPE": {
+          "company_name": "VapeJet Inc.",
+          "stock_price": 9.91,
+          "coin": "BNB",
+          "coin_price": 655.08,
+          "coin_id": "binancecoin"
+        },
+        "VERB": {
+          "company_name": "VERB Technology Company Inc.",
+          "stock_price": 6.81,
+          "coin": "TON",
+          "coin_price": 2.91,
+          "coin_id": "the-open-network"
+        }
+      }
+    },
+    "2025-W27": {
+      "week_start": "2025-07-07T08:00:00+08:00",
+      "baseline_date": "2025-07-07",
+      "companies": {
+        "MSTR": {
+          "company_name": "MicroStrategy Inc.",
+          "stock_price": 403.19,
+          "coin": "BTC",
+          "coin_price": 109215.2,
+          "coin_id": "bitcoin"
+        },
+        "VAPE": {
+          "company_name": "VapeJet Inc.",
+          "stock_price": 10.2,
+          "coin": "BNB",
+          "coin_price": 663.02,
+          "coin_id": "binancecoin"
+        },
+        "VERB": {
+          "company_name": "VERB Technology Company Inc.",
+          "stock_price": 8.01,
+          "coin": "TON",
+          "coin_price": 2.83,
+          "coin_id": "the-open-network"
+        }
+      }
+    },
+    "2025-W28": {
+      "week_start": "2025-07-14T08:00:00+08:00",
+      "baseline_date": "2025-07-14",
+      "companies": {
+        "MSTR": {
+          "company_name": "MicroStrategy Inc.",
+          "stock_price": 447.06,
+          "coin": "BTC",
+          "coin_price": 119117.56,
+          "coin_id": "bitcoin"
+        }
+      }
+    },
+    "2025-W29": {
+      "week_start": "2025-07-21T08:00:00+08:00",
+      "baseline_date": "2025-07-21",
+      "companies": {
+        "MSTR": {
+          "company_name": "MicroStrategy Inc.",
+          "stock_price": 430.1,
+          "coin": "BTC",
+          "coin_price": 117256.92,
+          "coin_id": "bitcoin"
+        },
+        "DFDV": {
+          "company_name": "DFDV Corp.",
+          "stock_price": 26.96,
+          "coin": "SOL",
+          "coin_price": 180.99,
+          "coin_id": "solana"
+        }
+      }
+    },
+    "2025-W30": {
+      "week_start": "2025-07-28T08:00:00+08:00",
+      "baseline_date": "2025-07-28",
+      "companies": {
+        "DFDV": {
+          "company_name": "DFDV Corp.",
+          "stock_price": 20.0,
+          "coin": "SOL",
+          "coin_price": 188.58,
+          "coin_id": "solana"
+        }
+      }
+    },
+    "2025-W31": {
+      "week_start": "2025-08-04T08:00:00+08:00",
+      "baseline_date": "2025-08-04",
+      "companies": {
+        "SBET": {
+          "company_name": "SharpLink Gaming Ltd.",
+          "stock_price": 17.9,
+          "coin": "ETH",
+          "coin_price": 3497.57,
+          "coin_id": "ethereum"
+        },
+        "DFDV": {
+          "company_name": "DFDV Corp.",
+          "stock_price": 14.6,
+          "coin": "SOL",
+          "coin_price": 161.9,
+          "coin_id": "solana"
+        }
+      }
+    }
+  }
+}

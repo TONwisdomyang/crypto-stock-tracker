@@ -1,0 +1,31 @@
+🪙 Crypto-Stock-Tracker 快速啟動指南
+===========================================
+
+方法1: 使用命令提示字元
+1. 按 Win+R 
+2. 輸入 cmd 並按 Enter
+3. 複製貼上下面這行命令：
+   cd /d "C:\Users\User\crypto-stock-tracker" && npm run dev
+
+方法2: 直接執行
+1. 按 Win+R
+2. 輸入這行命令：
+   cmd /k "cd /d C:\Users\User\crypto-stock-tracker && npm run dev"
+
+方法3: PowerShell
+1. 按 Win+X，選擇 Windows PowerShell
+2. 輸入：
+   Set-Location "C:\Users\User\crypto-stock-tracker"
+   npm run dev
+
+啟動後會顯示：
+- Local:   http://localhost:3000
+- 在瀏覽器中開啟這個網址即可使用
+
+停止服務：按 Ctrl+C
+
+🎯 網站功能：
+- 加密股票相關性分析
+- 滯後效應分析
+- 基準對照圖表
+- 即時數據追蹤

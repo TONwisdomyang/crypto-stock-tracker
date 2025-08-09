@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:aitmpl.com)",
+      "Bash(npx:*)",
+      "Bash(python -m pip install:*)",
+      "Bash(python:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(mkdir:*)",
+      "Bash(claude create-prd)",
+      "Bash(pip install pandas numpy scipy)",
+      "Bash(curl:*)",
+      "Bash(claude refactor-code:*)",
+      "Bash(claude ultra-think \"整個crypto-stock-tracker方案的深度分析：檢視當前實現，思考是否有更優的技術架構、用戶體驗或功能設計方式\")",
+      "Bash(node:*)",
+      "Bash(pkill:*)",
+      "Bash(true)",
+      "Bash(cp:*)",
+      "Bash(taskkill:*)",
+      "Bash(dir:*)",
+      "Bash(ls:*)",
+      "Bash(echo $HOME)",
+      "Bash(npm run lint)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(git init:*)",
+      "Bash(npm install:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": []
+  }
+}

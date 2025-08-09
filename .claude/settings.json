@@ -1,0 +1,56 @@
+{
+  "project_name": "crypto-stock-tracker",
+  "description": "Crypto-Stock correlation tracking with weekly baseline analysis",
+  "version": "1.0.0",
+  "model": "sonnet",
+  "language": "typescript",
+  "framework": "nextjs",
+  "features": {
+    "etl_pipeline": true,
+    "data_visualization": true,
+    "automated_updates": true,
+    "baseline_tracking": true
+  },
+  "data_sources": {
+    "stock_api": "yahoo_finance",
+    "crypto_api": "coingecko",
+    "update_schedule": "weekly_monday_8am_utc8"
+  },
+  "deployment": {
+    "platform": "cloudflare_pages",
+    "automation": "github_actions"
+  },
+  "ai_agents": {
+    "enabled": true,
+    "count": 13,
+    "primary_workflow": "collaborative"
+  },
+  "tools": {
+    "allowed": [
+      "python",
+      "npm",
+      "git",
+      "curl",
+      "pip"
+    ]
+  },
+  "hooks": {
+    "pre_etl": [
+      "echo 'Starting ETL pipeline...'",
+      "python -c \"import json; print('Validating holdings.json...'); json.load(open('public/data/holdings.json'))\""
+    ],
+    "post_etl": [
+      "echo 'ETL completed successfully'",
+      "ls -la public/data/*.json"
+    ],
+    "pre_deploy": [
+      "npm run lint",
+      "npm run typecheck", 
+      "python etl.py"
+    ],
+    "post_deploy": [
+      "echo 'Deployment completed'",
+      "echo 'Dashboard available at production URL'"
+    ]
+  }
+}

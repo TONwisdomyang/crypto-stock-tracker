@@ -1,0 +1,532 @@
+{
+  "SBET": {
+    "ticker": "SBET",
+    "analysis_period": "2025-06-02 to 2025-08-04",
+    "data_points": 10,
+    "pearson_correlation": {
+      "value": 0.1141,
+      "p_value": 0.753649,
+      "significance": "不顯著",
+      "strength": "幾乎無關"
+    },
+    "rolling_correlation": {
+      "values": [
+        0.2187,
+        0.794,
+        0.7911,
+        0.7345,
+        0.9881,
+        0.9635,
+        0.2989,
+        0.5903
+      ],
+      "average": 0.6724,
+      "trend": "相關性穩定"
+    },
+    "lag_analysis": {
+      "correlations": [
+        {
+          "lag_weeks": -2,
+          "correlation": -0.14730696967084664
+        },
+        {
+          "lag_weeks": -1,
+          "correlation": 0.14542820738776102
+        },
+        {
+          "lag_weeks": 0,
+          "correlation": 0.1140911778455799
+        },
+        {
+          "lag_weeks": 1,
+          "correlation": 0.1768931630293133
+        },
+        {
+          "lag_weeks": 2,
+          "correlation": 0.05792965245741802
+        }
+      ],
+      "best_lag": {
+        "lag_weeks": 1,
+        "correlation": 0.1768931630293133
+      },
+      "interpretation": "無明顯滯後關係"
+    },
+    "beta_coefficient": {
+      "value": 0.1513,
+      "interpretation": "幾乎無關：股價與幣價獨立變化"
+    },
+    "volatility_analysis": {
+      "stock_volatility": 25.38,
+      "crypto_volatility": 21.26,
+      "ratio": 1.1934,
+      "interpretation": "股價波動略高於幣價"
+    },
+    "decoupling_analysis": {
+      "total_events": 1,
+      "frequency": 0.1,
+      "events": [
+        {
+          "date": "2025-06-09",
+          "stock_change": -31.62,
+          "crypto_change": 3.18,
+          "type": "股價背離"
+        }
+      ],
+      "risk_level": "低風險"
+    },
+    "investment_insight": "股價與幣價相關性較弱(0.11)，投資風險分散效果佳 | 股價相對穩定，適合長期持有"
+  },
+  "MSTR": {
+    "ticker": "MSTR",
+    "analysis_period": "2025-06-02 to 2025-08-04",
+    "data_points": 10,
+    "pearson_correlation": {
+      "value": 0.787,
+      "p_value": 0.006906,
+      "significance": "顯著",
+      "strength": "強相關"
+    },
+    "rolling_correlation": {
+      "values": [
+        0.593,
+        0.6764,
+        0.9496,
+        0.9995,
+        0.9882,
+        0.983,
+        0.8263,
+        0.9328
+      ],
+      "average": 0.8686,
+      "trend": "相關性增強"
+    },
+    "lag_analysis": {
+      "correlations": [
+        {
+          "lag_weeks": -2,
+          "correlation": 0.6576696248263899
+        },
+        {
+          "lag_weeks": -1,
+          "correlation": 0.7639394788121481
+        },
+        {
+          "lag_weeks": 0,
+          "correlation": 0.7869671267127232
+        },
+        {
+          "lag_weeks": 1,
+          "correlation": 0.2633922071801907
+        },
+        {
+          "lag_weeks": 2,
+          "correlation": -0.15365733841539275
+        }
+      ],
+      "best_lag": {
+        "lag_weeks": 0,
+        "correlation": 0.7869671267127232
+      },
+      "interpretation": "同步反應"
+    },
+    "beta_coefficient": {
+      "value": 1.2577,
+      "interpretation": "高敏感度：股價對幣價變化反應強烈"
+    },
+    "volatility_analysis": {
+      "stock_volatility": 7.22,
+      "crypto_volatility": 5.02,
+      "ratio": 1.4384,
+      "interpretation": "股價波動略高於幣價"
+    },
+    "decoupling_analysis": {
+      "total_events": 1,
+      "frequency": 0.1,
+      "events": [
+        {
+          "date": "2025-06-16",
+          "stock_change": 1.88,
+          "crypto_change": -2.35,
+          "type": "幣價背離"
+        }
+      ],
+      "risk_level": "低風險"
+    },
+    "investment_insight": "股價與幣價高度相關(0.79)，適合配對交易策略 | 股價對幣價變化敏感，適合短線操作"
+  },
+  "HYPD": {
+    "ticker": "HYPD",
+    "analysis_period": "2025-06-02 to 2025-08-04",
+    "data_points": 9,
+    "pearson_correlation": {
+      "value": 0.5205,
+      "p_value": 0.150805,
+      "significance": "不顯著",
+      "strength": "中等相關"
+    },
+    "rolling_correlation": {
+      "values": [
+        0.1281,
+        -0.3909,
+        -0.9888,
+        0.6642,
+        0.4698,
+        0.9251,
+        0.8014
+      ],
+      "average": 0.2298,
+      "trend": "相關性增強"
+    },
+    "lag_analysis": {
+      "correlations": [
+        {
+          "lag_weeks": -2,
+          "correlation": 0.4252229734485705
+        },
+        {
+          "lag_weeks": -1,
+          "correlation": 0.6001955697765561
+        },
+        {
+          "lag_weeks": 0,
+          "correlation": 0.5205172864304105
+        },
+        {
+          "lag_weeks": 1,
+          "correlation": 0.34243764238722474
+        },
+        {
+          "lag_weeks": 2,
+          "correlation": 0.055133468144558925
+        }
+      ],
+      "best_lag": {
+        "lag_weeks": -1,
+        "correlation": 0.6001955697765561
+      },
+      "interpretation": "幣價滯後股價1週"
+    },
+    "beta_coefficient": {
+      "value": 17.3276,
+      "interpretation": "高敏感度：股價對幣價變化反應強烈"
+    },
+    "volatility_analysis": {
+      "stock_volatility": 281.36,
+      "crypto_volatility": 9.51,
+      "ratio": 29.5904,
+      "interpretation": "股價波動遠高於幣價"
+    },
+    "decoupling_analysis": {
+      "total_events": 3,
+      "frequency": 0.3333333333333333,
+      "events": [
+        {
+          "date": "2025-06-16",
+          "stock_change": -106.51,
+          "crypto_change": 12.06,
+          "type": "股價背離"
+        },
+        {
+          "date": "2025-06-30",
+          "stock_change": 536.69,
+          "crypto_change": -8.29,
+          "type": "股價背離"
+        },
+        {
+          "date": "2025-07-07",
+          "stock_change": 133.73,
+          "crypto_change": -4.24,
+          "type": "股價背離"
+        }
+      ],
+      "risk_level": "高風險"
+    },
+    "investment_insight": "股價對幣價變化敏感，適合短線操作 | 頻繁出現脫鉤現象，需要密切監控市場變化"
+  },
+  "DFDV": {
+    "ticker": "DFDV",
+    "analysis_period": "2025-06-02 to 2025-08-04",
+    "data_points": 8,
+    "pearson_correlation": {
+      "value": 0.1566,
+      "p_value": 0.711137,
+      "significance": "不顯著",
+      "strength": "幾乎無關"
+    },
+    "rolling_correlation": {
+      "values": [
+        -0.9909,
+        -0.9701,
+        0.4898,
+        0.5738,
+        -0.2305,
+        0.9963
+      ],
+      "average": -0.0219,
+      "trend": "相關性增強"
+    },
+    "lag_analysis": {
+      "correlations": [
+        {
+          "lag_weeks": -2,
+          "correlation": 0.4122685386580023
+        },
+        {
+          "lag_weeks": -1,
+          "correlation": 0.8595846529800337
+        },
+        {
+          "lag_weeks": 0,
+          "correlation": 0.1566018802269156
+        },
+        {
+          "lag_weeks": 1,
+          "correlation": -0.46188572021568364
+        },
+        {
+          "lag_weeks": 2,
+          "correlation": -0.7450323064038313
+        }
+      ],
+      "best_lag": {
+        "lag_weeks": -1,
+        "correlation": 0.8595846529800337
+      },
+      "interpretation": "幣價滯後股價1週"
+    },
+    "beta_coefficient": {
+      "value": 0.3963,
+      "interpretation": "低敏感度：股價對幣價變化反應較弱"
+    },
+    "volatility_analysis": {
+      "stock_volatility": 23.76,
+      "crypto_volatility": 10.73,
+      "ratio": 2.2145,
+      "interpretation": "股價波動遠高於幣價"
+    },
+    "decoupling_analysis": {
+      "total_events": 4,
+      "frequency": 0.5,
+      "events": [
+        {
+          "date": "2025-06-23",
+          "stock_change": 29.7,
+          "crypto_change": -7.39,
+          "type": "股價背離"
+        },
+        {
+          "date": "2025-06-30",
+          "stock_change": -31.61,
+          "crypto_change": 6.72,
+          "type": "股價背離"
+        },
+        {
+          "date": "2025-07-07",
+          "stock_change": 28.34,
+          "crypto_change": -4.45,
+          "type": "股價背離"
+        },
+        {
+          "date": "2025-07-21",
+          "stock_change": -5.45,
+          "crypto_change": 22.16,
+          "type": "幣價背離"
+        }
+      ],
+      "risk_level": "高風險"
+    },
+    "investment_insight": "股價與幣價相關性較弱(0.16)，投資風險分散效果佳 | 股價相對穩定，適合長期持有 | 頻繁出現脫鉤現象，需要密切監控市場變化"
+  },
+  "VERB": {
+    "ticker": "VERB",
+    "analysis_period": "2025-06-02 to 2025-08-04",
+    "data_points": 8,
+    "pearson_correlation": {
+      "value": 0.7277,
+      "p_value": 0.040732,
+      "significance": "顯著",
+      "strength": "強相關"
+    },
+    "rolling_correlation": {
+      "values": [
+        0.9999,
+        0.9993,
+        0.784,
+        -0.9799,
+        0.559,
+        0.8329
+      ],
+      "average": 0.5325,
+      "trend": "相關性減弱"
+    },
+    "lag_analysis": {
+      "correlations": [
+        {
+          "lag_weeks": -2,
+          "correlation": 0.21376559292748526
+        },
+        {
+          "lag_weeks": -1,
+          "correlation": 0.7495558295882269
+        },
+        {
+          "lag_weeks": 0,
+          "correlation": 0.7276909727768976
+        },
+        {
+          "lag_weeks": 1,
+          "correlation": 0.24808477310063884
+        },
+        {
+          "lag_weeks": 2,
+          "correlation": -0.7737598894701685
+        }
+      ],
+      "best_lag": {
+        "lag_weeks": 2,
+        "correlation": -0.7737598894701685
+      },
+      "interpretation": "股價滯後幣價2週"
+    },
+    "beta_coefficient": {
+      "value": 3.8295,
+      "interpretation": "高敏感度：股價對幣價變化反應強烈"
+    },
+    "volatility_analysis": {
+      "stock_volatility": 31.48,
+      "crypto_volatility": 6.84,
+      "ratio": 4.6047,
+      "interpretation": "股價波動遠高於幣價"
+    },
+    "decoupling_analysis": {
+      "total_events": 1,
+      "frequency": 0.125,
+      "events": [
+        {
+          "date": "2025-07-07",
+          "stock_change": 14.48,
+          "crypto_change": -5.59,
+          "type": "股價背離"
+        }
+      ],
+      "risk_level": "低風險"
+    },
+    "investment_insight": "股價與幣價高度相關(0.73)，適合配對交易策略 | 股價對幣價變化敏感，適合短線操作"
+  },
+  "BNC": {
+    "ticker": "BNC",
+    "analysis_period": "2025-06-02 to 2025-07-28",
+    "data_points": 8,
+    "pearson_correlation": {
+      "value": 0.81,
+      "p_value": 0.014804,
+      "significance": "顯著",
+      "strength": "強相關"
+    },
+    "rolling_correlation": {
+      "values": [
+        -0.9961,
+        0.6358,
+        0.8931,
+        0.4496,
+        -0.8992,
+        0.831
+      ],
+      "average": 0.1524,
+      "trend": "相關性增強"
+    },
+    "lag_analysis": {
+      "correlations": [
+        {
+          "lag_weeks": -2,
+          "correlation": 0.6983205824837715
+        },
+        {
+          "lag_weeks": -1,
+          "correlation": 0.40640666024756944
+        },
+        {
+          "lag_weeks": 0,
+          "correlation": 0.8099671768243853
+        },
+        {
+          "lag_weeks": 1,
+          "correlation": 0.923801697539289
+        },
+        {
+          "lag_weeks": 2,
+          "correlation": 0.8294242283688027
+        }
+      ],
+      "best_lag": {
+        "lag_weeks": 1,
+        "correlation": 0.923801697539289
+      },
+      "interpretation": "股價滯後幣價1週"
+    },
+    "beta_coefficient": {
+      "value": 18.2706,
+      "interpretation": "高敏感度：股價對幣價變化反應強烈"
+    },
+    "volatility_analysis": {
+      "stock_volatility": 180.13,
+      "crypto_volatility": 9.13,
+      "ratio": 19.7376,
+      "interpretation": "股價波動遠高於幣價"
+    },
+    "decoupling_analysis": {
+      "total_events": 3,
+      "frequency": 0.375,
+      "events": [
+        {
+          "date": "2025-06-16",
+          "stock_change": 3.62,
+          "crypto_change": -1.91,
+          "type": "股價背離"
+        },
+        {
+          "date": "2025-07-14",
+          "stock_change": -11.38,
+          "crypto_change": 5.13,
+          "type": "股價背離"
+        },
+        {
+          "date": "2025-07-21",
+          "stock_change": -4.5,
+          "crypto_change": 11.04,
+          "type": "幣價背離"
+        }
+      ],
+      "risk_level": "高風險"
+    },
+    "investment_insight": "股價與幣價高度相關(0.81)，適合配對交易策略 | 股價對幣價變化敏感，適合短線操作 | 頻繁出現脫鉤現象，需要密切監控市場變化"
+  },
+  "summary": {
+    "market_correlation": {
+      "average": 0.5193,
+      "range": [
+        0.1141,
+        0.81
+      ],
+      "interpretation": "整體市場中度相關，具有一定分散效果"
+    },
+    "market_sensitivity": {
+      "average_beta": 6.8722,
+      "range": [
+        0.1513,
+        18.2706
+      ]
+    },
+    "market_stability": {
+      "average_decoupling_frequency": 0.2556,
+      "most_stable": "SBET",
+      "most_volatile": "DFDV"
+    },
+    "investment_recommendations": [
+      "穩定投資推薦：SBET, MSTR, VERB",
+      "短線交易機會：HYPD, DFDV",
+      "高相關股票對可考慮配對交易策略"
+    ]
+  }
+}

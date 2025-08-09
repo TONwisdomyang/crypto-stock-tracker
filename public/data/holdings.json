@@ -1,0 +1,38 @@
+{
+  "MSTR": {
+    "company_name": "Strategy Inc.",
+    "coin": "BTC",
+    "holding_qty": 628791,
+    "coin_id": "bitcoin"
+  },
+  "SBET": {
+    "company_name": "SharpLink Gaming Ltd.",
+    "coin": "ETH",
+    "holding_qty": 521939,
+    "coin_id": "ethereum"
+  },
+  "BNC": {
+    "company_name": "BNB Network Company",
+    "coin": "BNB", 
+    "holding_qty": 50000,
+    "coin_id": "binancecoin"
+  },
+  "DFDV": {
+    "company_name": "DeFi Development Corp",
+    "coin": "SOL",
+    "holding_qty": 1293562,
+    "coin_id": "solana"
+  },
+  "HYPD": {
+    "company_name": "Hyperion DeFi, Inc.",
+    "coin": "HYPE",
+    "holding_qty": 1535772,
+    "coin_id": "hyperliquid"
+  },
+  "VERB": {
+    "company_name": "VERB Technology Company Inc.",
+    "coin": "TON",
+    "holding_qty": 100000,
+    "coin_id": "the-open-network"
+  }
+}
