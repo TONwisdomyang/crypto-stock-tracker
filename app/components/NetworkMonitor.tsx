@@ -7,7 +7,7 @@ interface NetworkMonitorProps {
   enabled?: boolean;
 }
 
-export default function NetworkMonitor({ enabled = process.env.NODE_ENV === 'development' }: NetworkMonitorProps) {
+export default function NetworkMonitor({ enabled = false }: NetworkMonitorProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [stats, setStats] = useState<any>({});
   const [cacheStats, setCacheStats] = useState<any>({});

@@ -72,9 +72,12 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 86400, // 1 day
   },
 
-  // Experimental optimizations
+  // Output configuration for Vercel
+  output: 'standalone',
+  
+  // Experimental optimizations (disabled for stability)
   experimental: {
-    optimizePackageImports: ['recharts', 'date-fns'],
+    // optimizePackageImports: ['recharts', 'date-fns'], // Disabled for production stability
   },
 
   // Environment variables for network optimization

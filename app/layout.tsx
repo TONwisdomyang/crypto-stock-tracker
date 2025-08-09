@@ -52,7 +52,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <NetworkMonitor />
+        <NetworkMonitor enabled={process.env.NODE_ENV === 'development'} />
       </body>
     </html>
   );

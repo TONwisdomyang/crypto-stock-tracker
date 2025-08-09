@@ -99,7 +99,7 @@ export function useDataFetch<T = unknown>(
 
   // Refetch on focus
   useEffect(() => {
-    if (!refetchOnFocus) return;
+    if (!refetchOnFocus || typeof window === 'undefined') return;
 
     const handleFocus = () => {
       // Only refetch if data is stale
@@ -114,7 +114,7 @@ export function useDataFetch<T = unknown>(
 
   // Refetch on reconnect
   useEffect(() => {
-    if (!refetchOnReconnect) return;
+    if (!refetchOnReconnect || typeof window === 'undefined') return;
 
     const handleOnline = () => {
       if (error) {
