@@ -44,19 +44,25 @@ export default function LagAnalysisDashboard() {
     { symbol: 'HYPD', name: 'Hyperion DeFi', coin: 'HYPE' }
   ];
 
+  // Get the base URL for data fetching (handles both dev and production)
+  const getDataUrl = (path: string) => {
+    if (typeof window === 'undefined') return path; // Server-side
+    return `${window.location.origin}${path}`; // Client-side with full URL
+  };
+
   // Preload critical resources for better performance
   usePreloadData([
-    '/data/weekly_stats.json',
-    '/data/summary.json',
-    '/data/historical_baseline.json',
-    '/data/correlation_analysis.json',
+    getDataUrl('/data/weekly_stats.json'),
+    getDataUrl('/data/summary.json'),
+    getDataUrl('/data/historical_baseline.json'),
+    getDataUrl('/data/correlation_analysis.json'),
   ], {
     retry: 2,
     timeout: 15000,
   });
 
   // Optimized data fetching with caching and retry
-  const { data: rawData, loading, error, metrics } = useDataFetch('/data/complete_historical_baseline.json', {
+  const { data: rawData, loading, error, metrics } = useDataFetch(getDataUrl('/data/complete_historical_baseline.json'), {
     retry: 3,
     retryDelay: 1500,
     timeout: 20000,
@@ -68,9 +74,21 @@ export default function LagAnalysisDashboard() {
 
   // Process data when raw data or selected ticker changes
   useEffect(() => {
+    console.log('Processing data effect triggered:', { 
+      hasRawData: !!rawData, 
+      selectedTicker,
+      loading,
+      error: error?.message
+    });
+    
     if (rawData) {
       try {
+        console.log('Raw data structure:', Object.keys(rawData));
         const processedData = processHistoricalDataForLagAnalysis(rawData, selectedTicker);
+        console.log('Processed data:', { 
+          weeklyDataCount: processedData.weeklyData.length,
+          lagEventsCount: processedData.lagEvents.length 
+        });
         setWeeklyData(processedData.weeklyData);
         setLagEvents(processedData.lagEvents);
       } catch (error) {
@@ -79,7 +97,7 @@ export default function LagAnalysisDashboard() {
         setLagEvents([]);
       }
     }
-  }, [rawData, selectedTicker]);
+  }, [rawData, selectedTicker, loading, error]);
 
   const processHistoricalDataForLagAnalysis = (data: any, ticker: string) => {
     const weeklyData: WeeklyData[] = [];

@@ -32,7 +32,8 @@
       "Bash(git branch:*)",
       "Bash(git remote add:*)",
       "Bash(git push:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "WebFetch(domain:crypto-stock-tracker.vercel.app)"
     ],
     "deny": []
   }
