@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main ]
 
+permissions:
+  contents: read
+  deployments: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -52,6 +56,18 @@ jobs:
       
     - name: Build Next.js app
       run: npm run build
+      
+    - name: Verify build output
+      run: |
+        echo "📁 Checking build output..."
+        ls -la
+        if [ -d "out" ]; then
+          echo "✅ out directory exists"
+          ls -la out/
+        else
+          echo "❌ out directory not found"
+          exit 1
+        fi
       
     - name: Deploy to Cloudflare Pages
       uses: cloudflare/pages-action@v1

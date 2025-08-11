@@ -72,10 +72,23 @@ export function useDataFetch<T = unknown>(
       }
     } catch (err) {
       if (err instanceof Error && err.name !== 'AbortError') {
+        console.warn(`Data fetch error for ${url}:`, err.message);
         setError(err);
-        // Keep stale data on error if available
-        if (!data && fallbackData) {
-          setData(fallbackData as T);
+        
+        // Keep stale data on error if available, otherwise use fallback
+        if (!data) {
+          if (fallbackData) {
+            setData(fallbackData as T);
+            console.info(`Using fallback data for ${url}`);
+          }
+        }
+        
+        // Auto-retry on network errors after a delay
+        if (err.message.includes('fetch') || err.message.includes('network')) {
+          setTimeout(() => {
+            console.info(`Auto-retrying failed request to ${url}`);
+            fetchData(false);
+          }, 5000);
         }
       }
     } finally {

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useDataFetch, usePreloadData } from '../utils/useDataFetch';
+import { fallbackHistoricalData } from '../utils/fallbackData';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
 
 interface WeeklyData {
@@ -62,14 +63,21 @@ export default function LagAnalysisDashboard() {
     staleTime: 600000, // 10 minutes cache for historical data
     refetchOnFocus: false, // Historical data doesn't change frequently
     cacheKey: `lag-analysis-${selectedTicker}`,
+    fallbackData: fallbackHistoricalData, // Provide fallback data
   });
 
   // Process data when raw data or selected ticker changes
   useEffect(() => {
     if (rawData) {
-      const processedData = processHistoricalDataForLagAnalysis(rawData, selectedTicker);
-      setWeeklyData(processedData.weeklyData);
-      setLagEvents(processedData.lagEvents);
+      try {
+        const processedData = processHistoricalDataForLagAnalysis(rawData, selectedTicker);
+        setWeeklyData(processedData.weeklyData);
+        setLagEvents(processedData.lagEvents);
+      } catch (error) {
+        console.error('Error processing historical data:', error);
+        setWeeklyData([]);
+        setLagEvents([]);
+      }
     }
   }, [rawData, selectedTicker]);
 
@@ -102,12 +110,21 @@ export default function LagAnalysisDashboard() {
 
     // 過濾未來數據 - 只顯示已完成的週期
     const filterCompletedWeeks = (weekData: any) => {
-      if (!weekData || !weekData.baseline_date) return false;
+      if (!weekData || !weekData.baseline_date || typeof weekData.baseline_date !== 'string') {
+        return false;
+      }
       
       try {
         const now = new Date();
-        const weekEnd = new Date(weekData.baseline_date);
-        weekEnd.setDate(weekEnd.getDate() + 6); // 週日結束
+        const baselineDate = new Date(weekData.baseline_date);
+        
+        // 檢查日期是否有效
+        if (isNaN(baselineDate.getTime())) {
+          return false;
+        }
+        
+        const weekEnd = new Date(baselineDate);
+        weekEnd.setDate(baselineDate.getDate() + 6); // 週日結束
         
         return weekEnd <= now; // 只返回已完成的週期
       } catch (error) {
@@ -120,19 +137,34 @@ export default function LagAnalysisDashboard() {
     let baselineStockPrice: number | null = null;
     let baselineCryptoPrice: number | null = null;
 
-    const sortedWeeks = Object.keys(data.data).sort();
+    const sortedWeeks = Object.keys(data.data || {}).sort();
     let previousWeekData: any = null;
 
     for (const weekKey of sortedWeeks) {
       const weekData = data.data[weekKey];
       
-      // 跳過未完成的週期
-      if (!filterCompletedWeeks(weekData)) {
+      // 跳過無效或未完成的週期
+      if (!weekData || !filterCompletedWeeks(weekData)) {
         continue;
       }
       
-      if (weekData.companies && weekData.companies[ticker]) {
+      if (weekData.companies && typeof weekData.companies === 'object' && weekData.companies[ticker]) {
         const company = weekData.companies[ticker];
+        
+        // 驗證公司數據
+        if (!company || typeof company !== 'object') {
+          continue;
+        }
+        
+        // 驗證價格數據
+        if (typeof company.stock_price !== 'number' || typeof company.coin_price !== 'number') {
+          continue;
+        }
+        
+        // 檢查價格是否為有效數字
+        if (!isFinite(company.stock_price) || !isFinite(company.coin_price)) {
+          continue;
+        }
         
         // 設置基準價格
         if (baselineStockPrice === null) {
@@ -296,6 +328,31 @@ export default function LagAnalysisDashboard() {
     return null;
   };
 
+  if (error && !data) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+        <div className="flex items-center justify-center h-96">
+          <div className="text-center max-w-md">
+            <div className="text-6xl mb-4">⚠️</div>
+            <h2 className="text-2xl font-bold text-red-400 mb-4">載入失敗</h2>
+            <p className="text-slate-300 mb-4">
+              無法載入數據，請檢查網路連接或重試
+            </p>
+            <div className="text-sm text-red-400 mb-4 p-3 bg-red-900/20 rounded-lg">
+              錯誤詳情: {error.message}
+            </div>
+            <button 
+              onClick={() => window.location.reload()}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors"
+            >
+              重新載入頁面
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
@@ -309,8 +366,8 @@ export default function LagAnalysisDashboard() {
               </div>
             )}
             {error && (
-              <div className="text-sm text-red-400 mt-2">
-                網路錯誤：{error.message}
+              <div className="text-sm text-yellow-400 mt-2">
+                使用快取數據 • 網路錯誤：{error.message}
               </div>
             )}
           </div>
@@ -403,8 +460,9 @@ export default function LagAnalysisDashboard() {
               </h3>
               
               <div className="h-96 mb-4">
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={weeklyData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                {weeklyData.length > 0 ? (
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={weeklyData} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
                     <XAxis 
                       dataKey="week" 
@@ -446,8 +504,17 @@ export default function LagAnalysisDashboard() {
                       activeDot={{ r: 6, stroke: '#3B82F6', strokeWidth: 2 }}
                       name={`${getCurrentTicker()?.coin} 幣價變化`}
                     />
-                  </LineChart>
-                </ResponsiveContainer>
+                    </LineChart>
+                  </ResponsiveContainer>
+                ) : (
+                  <div className="h-full flex items-center justify-center">
+                    <div className="text-center text-slate-400">
+                      <div className="text-4xl mb-4">📊</div>
+                      <p className="text-lg">暫無圖表數據</p>
+                      <p className="text-sm">請等待數據載入或選擇其他股票</p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* 圖例 */}

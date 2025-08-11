@@ -72,8 +72,10 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 86400, // 1 day
   },
 
-  // Output configuration for Vercel
-  output: 'standalone',
+  // Output configuration for static export
+  output: 'export',
+  trailingSlash: true,
+  skipTrailingSlashRedirect: true,
   
   // Experimental optimizations (disabled for stability)
   experimental: {
