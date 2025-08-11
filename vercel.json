@@ -1,12 +1,5 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next",
   "framework": "nextjs",
-  "functions": {
-    "app/**": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "headers": [
     {
       "source": "/data/(.*)",

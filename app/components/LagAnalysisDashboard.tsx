@@ -309,10 +309,13 @@ export default function LagAnalysisDashboard() {
               </span>
             </div>
             <div className="text-slate-300 text-sm">
-              股價: <span className="font-mono">${data.stockPrice?.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-              })}</span>
+              股價: <span className="font-mono">${typeof data.stockPrice === 'number' 
+                ? data.stockPrice.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                  }) 
+                : 'N/A'
+              }</span>
             </div>
           </div>
 
@@ -325,10 +328,13 @@ export default function LagAnalysisDashboard() {
               </span>
             </div>
             <div className="text-slate-300 text-sm">
-              幣價: <span className="font-mono">${data.cryptoPrice?.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: currentTicker?.coin === 'BTC' ? 0 : 2
-              })}</span>
+              幣價: <span className="font-mono">${typeof data.cryptoPrice === 'number'
+                ? data.cryptoPrice.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: currentTicker?.coin === 'BTC' ? 0 : 2
+                  })
+                : 'N/A'
+              }</span>
             </div>
           </div>
 
@@ -455,12 +461,18 @@ export default function LagAnalysisDashboard() {
                       {/* 原始價格 */}
                       <div className="flex justify-between text-xs text-slate-500 border-t border-slate-600 pt-1">
                         <span className="font-mono">
-                          ${event.stockPrice?.toLocaleString(undefined, {maximumFractionDigits: 2})}
+                          ${typeof event.stockPrice === 'number' 
+                            ? event.stockPrice.toLocaleString(undefined, {maximumFractionDigits: 2})
+                            : 'N/A'
+                          }
                         </span>
                         <span className="font-mono">
-                          ${event.cryptoPrice?.toLocaleString(undefined, {
-                            maximumFractionDigits: currentTicker?.coin === 'BTC' ? 0 : 2
-                          })}
+                          ${typeof event.cryptoPrice === 'number'
+                            ? event.cryptoPrice.toLocaleString(undefined, {
+                                maximumFractionDigits: currentTicker?.coin === 'BTC' ? 0 : 2
+                              })
+                            : 'N/A'
+                          }
                         </span>
                       </div>
                     </div>
