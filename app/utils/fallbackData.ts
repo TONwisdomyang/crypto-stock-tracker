@@ -1,61 +1,115 @@
 // Fallback data for when network requests fail
 export const fallbackHistoricalData = {
+  generated_at: "2025-08-18T16:41:34.273096",
+  timezone: "Asia/Taipei",
+  baseline_time: "08:00",
+  period: "2025-08-04 - Current Week",
   data: {
-    "2025-01-06": {
-      baseline_date: "2025-01-06",
+    "2025-W32": {
+      baseline_date: "2025-08-04",
+      week_start: "2025-08-04T08:00:00+08:00",
       companies: {
         MSTR: {
-          stock_price: 440.50,
-          coin_price: 92000.00,
-        },
-        BNC: {
-          stock_price: 45.20,
-          coin_price: 710.00,
+          company_name: "Strategy Inc.",
+          ticker_used: "MSTR",
+          stock_price: 366.32,
+          coin: "BTC",
+          coin_price: 115303,
+          coin_id: "btc"
         },
         SBET: {
-          stock_price: 12.80,
-          coin_price: 3200.00,
+          company_name: "SharpLink Gaming Ltd.",
+          ticker_used: "SBET",
+          stock_price: 19.85,
+          coin: "ETH",
+          coin_price: 4275.5,
+          coin_id: "eth"
+        },
+        BNC: {
+          company_name: "BNB Network Company",
+          ticker_used: "BNC",
+          stock_price: 24.86,
+          coin: "BNB",
+          coin_price: 830.92,
+          coin_id: "bnb"
         },
         DFDV: {
-          stock_price: 8.90,
-          coin_price: 240.00,
-        },
-        VERB: {
-          stock_price: 2.40,
-          coin_price: 6.50,
+          company_name: "DeFi Development Corp",
+          ticker_used: "DFDV",
+          stock_price: 18.69,
+          coin: "SOL",
+          coin_price: 181.11,
+          coin_id: "sol"
         },
         HYPD: {
-          stock_price: 15.60,
-          coin_price: 12.50,
+          company_name: "Hyperion DeFi, Inc.",
+          ticker_used: "HYPD",
+          stock_price: 7.2,
+          coin: "HYPE",
+          coin_price: 43.63,
+          coin_id: "hype"
+        },
+        VERB: {
+          company_name: "VERB Technology Company Inc.",
+          ticker_used: "VERB",
+          stock_price: 22.45,
+          coin: "TON",
+          coin_price: 3.37,
+          coin_id: "ton"
         }
       }
     },
-    "2025-01-13": {
-      baseline_date: "2025-01-13",
+    "2025-W31": {
+      baseline_date: "2025-07-28",
+      week_start: "2025-07-28T08:00:00+08:00",
       companies: {
         MSTR: {
-          stock_price: 455.20,
-          coin_price: 95000.00,
-        },
-        BNC: {
-          stock_price: 47.80,
-          coin_price: 720.00,
+          company_name: "Strategy Inc.",
+          ticker_used: "MSTR",
+          stock_price: 366.32,
+          coin: "BTC",
+          coin_price: 112228.25,
+          coin_id: "btc"
         },
         SBET: {
-          stock_price: 13.20,
-          coin_price: 3350.00,
+          company_name: "SharpLink Gaming Ltd.",
+          ticker_used: "SBET",
+          stock_price: 19.85,
+          coin: "ETH",
+          coin_price: 4161.49,
+          coin_id: "eth"
+        },
+        BNC: {
+          company_name: "BNB Network Company",
+          ticker_used: "BNC",
+          stock_price: 24.86,
+          coin: "BNB",
+          coin_price: 808.76,
+          coin_id: "bnb"
         },
         DFDV: {
-          stock_price: 9.20,
-          coin_price: 250.00,
-        },
-        VERB: {
-          stock_price: 2.60,
-          coin_price: 6.80,
+          company_name: "DeFi Development Corp",
+          ticker_used: "DFDV",
+          stock_price: 18.69,
+          coin: "SOL",
+          coin_price: 176.28,
+          coin_id: "sol"
         },
         HYPD: {
-          stock_price: 16.20,
-          coin_price: 13.20,
+          company_name: "Hyperion DeFi, Inc.",
+          ticker_used: "HYPD",
+          stock_price: 7.2,
+          coin: "HYPE",
+          coin_price: 42.47,
+          coin_id: "hype"
+        },
+        VERB: {
+          company_name: "VERB Technology Company Inc.",
+          ticker_used: "VERB",
+          stock_price: 22.45,
+          coin: "TON",
+          coin_price: 3.28,
+          coin_id: "ton"
         }
       }
     }
