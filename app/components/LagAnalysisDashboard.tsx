@@ -139,11 +139,12 @@ export default function LagAnalysisDashboard() {
       if (!date || typeof date !== 'string') return 'Invalid Date';
       
       try {
-        const start = new Date(date);
+        // 使用 UTC 時區解析日期，避免本地時區問題
+        const start = new Date(date + 'T00:00:00.000Z');
         const end = new Date(start);
-        end.setDate(start.getDate() + 6);
+        end.setUTCDate(start.getUTCDate() + 6);
         
-        const formatDate = (date: Date) => `${date.getMonth() + 1}/${date.getDate()}`;
+        const formatDate = (date: Date) => `${date.getUTCMonth() + 1}/${date.getUTCDate()}`;
         return `${formatDate(start)} ~ ${formatDate(end)}`;
       } catch (error) {
         console.error('Error formatting date range:', error);
@@ -160,7 +161,8 @@ export default function LagAnalysisDashboard() {
       
       try {
         const now = new Date();
-        const baselineDate = new Date(weekData.baseline_date);
+        // 使用 UTC 時區解析日期，避免時區問題
+        const baselineDate = new Date(weekData.baseline_date + 'T00:00:00.000Z');
         
         // 檢查日期是否有效
         if (isNaN(baselineDate.getTime())) {
@@ -168,7 +170,7 @@ export default function LagAnalysisDashboard() {
         }
         
         const weekEnd = new Date(baselineDate);
-        weekEnd.setDate(baselineDate.getDate() + 6); // 週日結束
+        weekEnd.setUTCDate(baselineDate.getUTCDate() + 6); // 週日結束
         
         return weekEnd <= now; // 只返回已完成的週期
       } catch (error) {
