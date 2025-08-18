@@ -134,18 +134,20 @@ export default function LagAnalysisDashboard() {
       return { weeklyData, lagEvents };
     }
     
-    // 格式化週期顯示
+    // 格式化週期顯示 - 從週一到週五的範圍
     const formatWeekRange = (date: string) => {
       if (!date || typeof date !== 'string') return 'Invalid Date';
       
       try {
-        // 使用 UTC 時區解析日期，避免本地時區問題
-        const start = new Date(date + 'T00:00:00.000Z');
-        const end = new Date(start);
-        end.setUTCDate(start.getUTCDate() + 6);
+        // 使用 UTC 時區解析日期，baseline_date 是週五
+        const friday = new Date(date + 'T00:00:00.000Z');
+        
+        // 計算週一（往前推4天，因為週五是第4天）
+        const monday = new Date(friday);
+        monday.setUTCDate(friday.getUTCDate() - 4);
         
         const formatDate = (date: Date) => `${date.getUTCMonth() + 1}/${date.getUTCDate()}`;
-        return `${formatDate(start)} ~ ${formatDate(end)}`;
+        return `${formatDate(monday)} ~ ${formatDate(friday)}`;
       } catch (error) {
         console.error('Error formatting date range:', error);
         return 'Invalid Date';
