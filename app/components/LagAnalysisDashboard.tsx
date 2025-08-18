@@ -134,20 +134,18 @@ export default function LagAnalysisDashboard() {
       return { weeklyData, lagEvents };
     }
     
-    // 格式化週期顯示 - 從週一到週五的範圍
+    // 格式化週期顯示 - 統一的週基準（股價5天+幣價7天，同一週期比較）
     const formatWeekRange = (date: string) => {
       if (!date || typeof date !== 'string') return 'Invalid Date';
       
       try {
-        // 使用 UTC 時區解析日期，baseline_date 是週五
+        // baseline_date 是週五收盤日，往前推7天得到上週五作為週期起始
         const friday = new Date(date + 'T00:00:00.000Z');
-        
-        // 計算週一（往前推4天，因為週五是第4天）
-        const monday = new Date(friday);
-        monday.setUTCDate(friday.getUTCDate() - 4);
+        const startDate = new Date(friday);
+        startDate.setUTCDate(friday.getUTCDate() - 7); // 往前7天到上週五
         
         const formatDate = (date: Date) => `${date.getUTCMonth() + 1}/${date.getUTCDate()}`;
-        return `${formatDate(monday)} ~ ${formatDate(friday)}`;
+        return `${formatDate(startDate)} ~ ${formatDate(friday)}`;
       } catch (error) {
         console.error('Error formatting date range:', error);
         return 'Invalid Date';
