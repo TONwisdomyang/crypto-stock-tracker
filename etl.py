@@ -38,8 +38,10 @@ class CryptoStockETL:
         }
         
         # Rate limiting - CoinGecko free tier: 10 calls per minute
-        self.rate_limit_delay = 6.5  # seconds between API calls (safer margin)
-        self.max_retries = 3
+        # More conservative approach to avoid rate limits
+        self.rate_limit_delay = 12  # seconds between API calls (5 calls/minute)
+        self.max_retries = 5  # Increased retry attempts
+        self.backoff_multiplier = 2  # Exponential backoff multiplier
         
     def load_holdings(self) -> Dict[str, Any]:
         """Load company crypto holdings configuration"""
@@ -110,8 +112,11 @@ class CryptoStockETL:
             return None
     
     def fetch_crypto_data(self, coin_id: str) -> Optional[Dict[str, Any]]:
-        """Fetch cryptocurrency data from CoinGecko with retry logic"""
+        """Fetch cryptocurrency data from CoinGecko with enhanced retry logic"""
         import time
+        
+        # Always wait before making API call to respect rate limits
+        time.sleep(self.rate_limit_delay)
         
         for attempt in range(self.max_retries):
             try:
@@ -126,8 +131,14 @@ class CryptoStockETL:
                 }
                 
                 response = requests.get(url, params=params, headers=self.request_headers, timeout=30)
-                response.raise_for_status()
                 
+                if response.status_code == 429:  # Rate limited
+                    wait_time = self.rate_limit_delay * (self.backoff_multiplier ** attempt)
+                    logger.warning(f"Rate limited for {coin_id}, waiting {wait_time}s (attempt {attempt+1}/{self.max_retries})")
+                    time.sleep(wait_time)
+                    continue
+                
+                response.raise_for_status()
                 data = response.json()
                 
                 if coin_id not in data:
@@ -136,7 +147,7 @@ class CryptoStockETL:
                 
                 coin_data = data[coin_id]
                 
-                return {
+                result = {
                     "coin_id": coin_id,
                     "close": coin_data['usd'],
                     "pct_change": coin_data.get('usd_24h_change', 0),
@@ -145,23 +156,37 @@ class CryptoStockETL:
                     "timestamp": datetime.now().isoformat()
                 }
                 
+                logger.info(f"Successfully fetched crypto data for {coin_id}: ${coin_data['usd']}")
+                return result
+                
             except requests.exceptions.HTTPError as e:
                 if e.response.status_code == 429:  # Rate limit
-                    wait_time = (2 ** attempt) * 10  # Exponential backoff
+                    wait_time = self.rate_limit_delay * (self.backoff_multiplier ** attempt)
                     logger.warning(f"Rate limit hit for {coin_id}, waiting {wait_time}s (attempt {attempt + 1}/{self.max_retries})")
                     time.sleep(wait_time)
                     continue
                 else:
                     logger.error(f"HTTP error fetching crypto data for {coin_id}: {e}")
+                    if attempt < self.max_retries - 1:
+                        wait_time = self.rate_limit_delay * (self.backoff_multiplier ** attempt)
+                        logger.info(f"Retrying in {wait_time}s...")
+                        time.sleep(wait_time)
+                        continue
                     return None
             except requests.exceptions.RequestException as e:
                 logger.error(f"Request error fetching crypto data for {coin_id}: {e}")
                 if attempt < self.max_retries - 1:
-                    time.sleep(5)  # Wait before retry
+                    wait_time = self.rate_limit_delay * (self.backoff_multiplier ** attempt)
+                    logger.info(f"Retrying in {wait_time}s...")
+                    time.sleep(wait_time)
                     continue
                 return None
             except Exception as e:
                 logger.error(f"Unexpected error fetching crypto data for {coin_id}: {e}")
+                if attempt < self.max_retries - 1:
+                    wait_time = 5  # Short wait for unexpected errors
+                    time.sleep(wait_time)
+                    continue
                 return None
         
         logger.error(f"Failed to fetch crypto data for {coin_id} after {self.max_retries} attempts")
