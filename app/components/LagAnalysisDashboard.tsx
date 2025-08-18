@@ -169,10 +169,9 @@ export default function LagAnalysisDashboard() {
           return false;
         }
         
-        const weekEnd = new Date(baselineDate);
-        weekEnd.setUTCDate(baselineDate.getUTCDate() + 6); // 週日結束
-        
-        return weekEnd <= now; // 只返回已完成的週期
+        // 週期以週五收盤結束，不需要等到週日
+        // 如果今天已經是週五當天或之後，這個週期就算完成
+        return baselineDate <= now; // 週五收盤後即為完成週期
       } catch (error) {
         console.error('Error filtering completed weeks:', error);
         return false;
