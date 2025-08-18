@@ -48,12 +48,13 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         
-        # 先拉取遠程更改以避免衝突
-        echo "Syncing with remote repository..."
-        git pull --rebase origin main || {
+        # 先拉取遠程更改以避免衝突，使用當前分支
+        CURRENT_BRANCH=${GITHUB_REF_NAME}
+        echo "Syncing with remote repository on branch: $CURRENT_BRANCH"
+        git pull --rebase origin $CURRENT_BRANCH || {
           echo "Rebase conflicts detected, using merge strategy..."
           git rebase --abort
-          git pull --no-rebase origin main
+          git pull --no-rebase origin $CURRENT_BRANCH
         }
         
         # 檢查是否仍有變更需要提交
@@ -86,7 +87,7 @@ jobs:
             if [ $i -lt 3 ]; then
               echo "Syncing again and retrying..."
               sleep 10
-              git pull --rebase origin main || git pull --no-rebase origin main
+              git pull --rebase origin $CURRENT_BRANCH || git pull --no-rebase origin $CURRENT_BRANCH
             else
               echo "💥 Push failed after 3 attempts"
               exit 1
