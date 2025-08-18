@@ -1,12 +1,12 @@
 {
-  "generated_at": "2025-08-18T15:26:44.167470",
+  "generated_at": "2025-08-18T15:40:32.908907",
   "timezone": "Asia/Taipei",
   "baseline_time": "08:00",
-  "period": "2025-08-18 - Current Week",
+  "period": "2025-08-04 - Current Week",
   "data": {
-    "2025-W34": {
-      "baseline_date": "2025-08-18",
-      "week_start": "2025-08-18T08:00:00+08:00",
+    "2025-W32": {
+      "baseline_date": "2025-08-04",
+      "week_start": "2025-08-04T08:00:00+08:00",
       "companies": {
         "MSTR": {
           "company_name": "Strategy Inc.",
@@ -50,9 +50,9 @@
         }
       }
     },
-    "2025-W33": {
-      "baseline_date": "2025-08-11",
-      "week_start": "2025-08-11T08:00:00+08:00",
+    "2025-W31": {
+      "baseline_date": "2025-07-28",
+      "week_start": "2025-07-28T08:00:00+08:00",
       "companies": {
         "MSTR": {
           "company_name": "Strategy Inc.",
