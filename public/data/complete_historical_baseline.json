@@ -1,5 +1,5 @@
 {
-  "generated_at": "2025-08-18T15:42:25.533055",
+  "generated_at": "2025-08-18T16:13:10.842444",
   "timezone": "Asia/Taipei",
   "baseline_time": "08:00",
   "period": "2025-08-04 - Current Week",
@@ -13,7 +13,7 @@
           "ticker_used": "MSTR",
           "stock_price": 366.32,
           "coin": "BTC",
-          "coin_price": 115433,
+          "coin_price": 115303,
           "coin_id": "btc"
         },
         "SBET": {
@@ -21,7 +21,7 @@
           "ticker_used": "SBET",
           "stock_price": 19.85,
           "coin": "ETH",
-          "coin_price": 4252.17,
+          "coin_price": 4275.5,
           "coin_id": "eth"
         },
         "BNC": {
@@ -29,15 +29,23 @@
           "ticker_used": "BNC",
           "stock_price": 24.86,
           "coin": "BNB",
-          "coin_price": 830.2,
+          "coin_price": 830.92,
           "coin_id": "bnb"
+        },
+        "DFDV": {
+          "company_name": "DeFi Development Corp",
+          "ticker_used": "DFDV",
+          "stock_price": 18.69,
+          "coin": "SOL",
+          "coin_price": 181.11,
+          "coin_id": "sol"
         },
         "HYPD": {
           "company_name": "Hyperion DeFi, Inc.",
           "ticker_used": "HYPD",
           "stock_price": 7.2,
           "coin": "HYPE",
-          "coin_price": 43.56,
+          "coin_price": 43.63,
           "coin_id": "hype"
         },
         "VERB": {
@@ -45,7 +53,7 @@
           "ticker_used": "VERB",
           "stock_price": 22.45,
           "coin": "TON",
-          "coin_price": 3.36,
+          "coin_price": 3.37,
           "coin_id": "ton"
         }
       }
@@ -59,7 +67,7 @@
           "ticker_used": "MSTR",
           "stock_price": 366.32,
           "coin": "BTC",
-          "coin_price": 112354.79,
+          "coin_price": 112228.25,
           "coin_id": "btc"
         },
         "SBET": {
@@ -67,7 +75,7 @@
           "ticker_used": "SBET",
           "stock_price": 19.85,
           "coin": "ETH",
-          "coin_price": 4138.78,
+          "coin_price": 4161.49,
           "coin_id": "eth"
         },
         "BNC": {
@@ -75,15 +83,23 @@
           "ticker_used": "BNC",
           "stock_price": 24.86,
           "coin": "BNB",
-          "coin_price": 808.06,
+          "coin_price": 808.76,
           "coin_id": "bnb"
+        },
+        "DFDV": {
+          "company_name": "DeFi Development Corp",
+          "ticker_used": "DFDV",
+          "stock_price": 18.69,
+          "coin": "SOL",
+          "coin_price": 176.28,
+          "coin_id": "sol"
         },
         "HYPD": {
           "company_name": "Hyperion DeFi, Inc.",
           "ticker_used": "HYPD",
           "stock_price": 7.2,
           "coin": "HYPE",
-          "coin_price": 42.4,
+          "coin_price": 42.47,
           "coin_id": "hype"
         },
         "VERB": {
@@ -91,7 +107,7 @@
           "ticker_used": "VERB",
           "stock_price": 22.45,
           "coin": "TON",
-          "coin_price": 3.27,
+          "coin_price": 3.28,
           "coin_id": "ton"
         }
       }
@@ -105,7 +121,7 @@
           "ticker_used": "MSTR",
           "stock_price": 384.64,
           "coin": "BTC",
-          "coin_price": 118511.21,
+          "coin_price": 118377.75,
           "coin_id": "btc"
         },
         "SBET": {
@@ -113,7 +129,7 @@
           "ticker_used": "SBET",
           "stock_price": 20.84,
           "coin": "ETH",
-          "coin_price": 4365.56,
+          "coin_price": 4389.51,
           "coin_id": "eth"
         },
         "BNC": {
@@ -121,15 +137,23 @@
           "ticker_used": "BNC",
           "stock_price": 26.1,
           "coin": "BNB",
-          "coin_price": 852.34,
+          "coin_price": 853.08,
           "coin_id": "bnb"
+        },
+        "DFDV": {
+          "company_name": "DeFi Development Corp",
+          "ticker_used": "DFDV",
+          "stock_price": 19.62,
+          "coin": "SOL",
+          "coin_price": 185.94,
+          "coin_id": "sol"
         },
         "HYPD": {
           "company_name": "Hyperion DeFi, Inc.",
           "ticker_used": "HYPD",
           "stock_price": 7.56,
           "coin": "HYPE",
-          "coin_price": 44.72,
+          "coin_price": 44.79,
           "coin_id": "hype"
         },
         "VERB": {
@@ -137,7 +161,7 @@
           "ticker_used": "VERB",
           "stock_price": 23.57,
           "coin": "TON",
-          "coin_price": 3.45,
+          "coin_price": 3.46,
           "coin_id": "ton"
         }
       }
@@ -151,7 +175,7 @@
           "ticker_used": "MSTR",
           "stock_price": 348.0,
           "coin": "BTC",
-          "coin_price": 124667.64,
+          "coin_price": 124527.24,
           "coin_id": "btc"
         },
         "SBET": {
@@ -159,7 +183,7 @@
           "ticker_used": "SBET",
           "stock_price": 18.86,
           "coin": "ETH",
-          "coin_price": 4592.34,
+          "coin_price": 4617.54,
           "coin_id": "eth"
         },
         "BNC": {
@@ -167,15 +191,23 @@
           "ticker_used": "BNC",
           "stock_price": 23.62,
           "coin": "BNB",
-          "coin_price": 896.62,
+          "coin_price": 897.39,
           "coin_id": "bnb"
+        },
+        "DFDV": {
+          "company_name": "DeFi Development Corp",
+          "ticker_used": "DFDV",
+          "stock_price": 17.76,
+          "coin": "SOL",
+          "coin_price": 195.6,
+          "coin_id": "sol"
         },
         "HYPD": {
           "company_name": "Hyperion DeFi, Inc.",
           "ticker_used": "HYPD",
           "stock_price": 6.84,
           "coin": "HYPE",
-          "coin_price": 47.04,
+          "coin_price": 47.12,
           "coin_id": "hype"
         },
         "VERB": {
@@ -183,7 +215,7 @@
           "ticker_used": "VERB",
           "stock_price": 21.33,
           "coin": "TON",
-          "coin_price": 3.63,
+          "coin_price": 3.64,
           "coin_id": "ton"
         }
       }
@@ -197,7 +229,7 @@
           "ticker_used": "MSTR",
           "stock_price": 366.32,
           "coin": "BTC",
-          "coin_price": 106198.36,
+          "coin_price": 106078.76,
           "coin_id": "btc"
         },
         "SBET": {
@@ -205,7 +237,7 @@
           "ticker_used": "SBET",
           "stock_price": 19.85,
           "coin": "ETH",
-          "coin_price": 3912.0,
+          "coin_price": 3933.46,
           "coin_id": "eth"
         },
         "BNC": {
@@ -213,15 +245,23 @@
           "ticker_used": "BNC",
           "stock_price": 24.86,
           "coin": "BNB",
-          "coin_price": 763.78,
+          "coin_price": 764.45,
           "coin_id": "bnb"
+        },
+        "DFDV": {
+          "company_name": "DeFi Development Corp",
+          "ticker_used": "DFDV",
+          "stock_price": 18.69,
+          "coin": "SOL",
+          "coin_price": 166.62,
+          "coin_id": "sol"
         },
         "HYPD": {
           "company_name": "Hyperion DeFi, Inc.",
           "ticker_used": "HYPD",
           "stock_price": 7.2,
           "coin": "HYPE",
-          "coin_price": 40.08,
+          "coin_price": 40.14,
           "coin_id": "hype"
         },
         "VERB": {
@@ -229,7 +269,7 @@
           "ticker_used": "VERB",
           "stock_price": 22.45,
           "coin": "TON",
-          "coin_price": 3.09,
+          "coin_price": 3.1,
           "coin_id": "ton"
         }
       }

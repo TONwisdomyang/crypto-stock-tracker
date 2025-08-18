@@ -1,6 +1,6 @@
 {
   "week_end": "2025-08-18",
-  "generated_at": "2025-08-18T15:26:44.167470",
+  "generated_at": "2025-08-18T16:12:54.950030",
   "data": [
     {
       "ticker": "MSTR",
@@ -8,11 +8,11 @@
       "stock_close": 366.32,
       "stock_pct_change": -1.78,
       "coin": "BTC",
-      "coin_close": 115433,
-      "coin_pct_change": -2.23,
+      "coin_close": 115303,
+      "coin_pct_change": -2.34,
       "holding_qty": 628791,
       "holding_pct_of_supply": 3.1585,
-      "market_cap": 2297664008877.1064
+      "market_cap": 2295396861492.6924
     },
     {
       "ticker": "SBET",
@@ -20,11 +20,11 @@
       "stock_close": 19.85,
       "stock_pct_change": -15.5,
       "coin": "ETH",
-      "coin_close": 4252.17,
-      "coin_pct_change": -4.89,
+      "coin_close": 4275.5,
+      "coin_pct_change": -4.23,
       "holding_qty": 521939,
       "holding_pct_of_supply": 0.4324,
-      "market_cap": 513185751389.87646
+      "market_cap": 515682268541.1404
     },
     {
       "ticker": "BNC",
@@ -32,11 +32,23 @@
       "stock_close": 24.86,
       "stock_pct_change": -11.81,
       "coin": "BNB",
-      "coin_close": 830.2,
-      "coin_pct_change": -2.69,
+      "coin_close": 830.92,
+      "coin_pct_change": -2.66,
       "holding_qty": 50000,
       "holding_pct_of_supply": 0.0359,
-      "market_cap": 115632111851.8142
+      "market_cap": 115755937532.56734
+    },
+    {
+      "ticker": "DFDV",
+      "company_name": "DeFi Development Corp",
+      "stock_close": 18.69,
+      "stock_pct_change": -4.5,
+      "coin": "SOL",
+      "coin_close": 181.11,
+      "coin_pct_change": -5.65,
+      "holding_qty": 1293562,
+      "holding_pct_of_supply": 0.2395,
+      "market_cap": 97725523976.47119
     },
     {
       "ticker": "HYPD",
@@ -44,11 +56,11 @@
       "stock_close": 7.2,
       "stock_pct_change": 7.62,
       "coin": "HYPE",
-      "coin_close": 43.56,
-      "coin_pct_change": -7.56,
+      "coin_close": 43.63,
+      "coin_pct_change": -7.8,
       "holding_qty": 1535772,
       "holding_pct_of_supply": 0.4601,
-      "market_cap": 14539175783.194384
+      "market_cap": 14558184228.31401
     },
     {
       "ticker": "VERB",
@@ -56,11 +68,11 @@
       "stock_close": 22.45,
       "stock_pct_change": 23.69,
       "coin": "TON",
-      "coin_close": 3.36,
-      "coin_pct_change": -3.94,
+      "coin_close": 3.37,
+      "coin_pct_change": -2.84,
       "holding_qty": 100000,
       "holding_pct_of_supply": 0.0039,
-      "market_cap": 8619094741.329638
+      "market_cap": 8632659896.140045
     }
   ]
 }
