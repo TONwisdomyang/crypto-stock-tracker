@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useDataFetch, usePreloadData } from '../utils/useDataFetch';
 import { fallbackHistoricalData } from '../utils/fallbackData';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
@@ -99,6 +99,7 @@ export default function LagAnalysisDashboard() {
     }
   }, [rawData, selectedTicker, loading, error]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const processHistoricalDataForLagAnalysis = (data: any, ticker: string) => {
     const weeklyData: WeeklyData[] = [];
     const lagEvents: LagEvent[] = [];
@@ -127,6 +128,7 @@ export default function LagAnalysisDashboard() {
     };
 
     // 過濾未來數據 - 只顯示已完成的週期
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const filterCompletedWeeks = (weekData: any) => {
       if (!weekData || !weekData.baseline_date || typeof weekData.baseline_date !== 'string') {
         return false;
@@ -153,7 +155,6 @@ export default function LagAnalysisDashboard() {
 
     // 計算基準價格（第一週作為100%基準）
     let baselineStockPrice: number | null = null;
-    let baselineCryptoPrice: number | null = null;
 
     const sortedWeeks = Object.keys(data.data || {}).sort();
     let previousWeekData: any = null;
@@ -187,7 +188,6 @@ export default function LagAnalysisDashboard() {
         // 設置基準價格
         if (baselineStockPrice === null) {
           baselineStockPrice = company.stock_price;
-          baselineCryptoPrice = company.coin_price;
         }
 
         // 計算週環比變化 - 添加安全檢查
@@ -276,6 +276,7 @@ export default function LagAnalysisDashboard() {
     return { type: 'no_relation' as const, lagWeeks: 0, strength: 'weak' as const };
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const getLagDescription = (lagRel: any) => {
     switch (lagRel.type) {
       case 'stock_leads':
@@ -291,6 +292,7 @@ export default function LagAnalysisDashboard() {
 
   const getCurrentTicker = () => tickers.find(t => t.symbol === selectedTicker);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
