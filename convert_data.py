@@ -25,12 +25,27 @@ def convert_weekly_to_historical():
     with open(weekly_file, 'r') as f:
         weekly_data = json.load(f)
     
-    # Use the actual week_end from weekly_stats.json if available
+    # Use the actual week_end from weekly_stats.json, but ensure it's a completed week
     if 'week_end' in weekly_data:
-        current_date = weekly_data['week_end']
+        # The week_end from ETL is the Friday close date, but frontend expects baseline_date
+        # We need to ensure the week (baseline_date + 6 days) is completed
+        etl_date = datetime.strptime(weekly_data['week_end'], '%Y-%m-%d')
+        now = datetime.now()
+        
+        # Check if this week would be considered completed by frontend logic
+        week_end_check = etl_date + timedelta(days=6)  # Sunday end of week
+        
+        if week_end_check <= now:
+            current_date = weekly_data['week_end']
+            print(f"Using ETL date {current_date} (week ends {week_end_check.strftime('%Y-%m-%d')}, completed)")
+        else:
+            # Use previous week to ensure completion
+            current_date = (etl_date - timedelta(days=7)).strftime('%Y-%m-%d')
+            print(f"ETL date {weekly_data['week_end']} not completed, using {current_date} instead")
     else:
         # Fallback: use a past date to ensure it's considered a completed week
         current_date = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')  # 1 week ago
+        print(f"No week_end in ETL data, using fallback {current_date}")
     
     historical_data = {
         "generated_at": datetime.now().isoformat(),
