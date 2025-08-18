@@ -34,7 +34,10 @@
       "Bash(git push:*)",
       "Bash(git config:*)",
       "WebFetch(domain:crypto-stock-tracker.vercel.app)",
-      "Bash(rg:*)"
+      "Bash(rg:*)",
+      "Bash(pip install:*)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(claude --version)"
     ],
     "deny": []
   }
