@@ -25,9 +25,12 @@ def convert_weekly_to_historical():
     with open(weekly_file, 'r') as f:
         weekly_data = json.load(f)
     
-    # Create historical format - use a past date to ensure it's considered a completed week
-    # The frontend filters out weeks that haven't ended yet (week end = baseline_date + 6 days)
-    current_date = (datetime.now() - timedelta(days=14)).strftime('%Y-%m-%d')  # 2 weeks ago
+    # Use the actual week_end from weekly_stats.json if available
+    if 'week_end' in weekly_data:
+        current_date = weekly_data['week_end']
+    else:
+        # Fallback: use a past date to ensure it's considered a completed week
+        current_date = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')  # 1 week ago
     
     historical_data = {
         "generated_at": datetime.now().isoformat(),
