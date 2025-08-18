@@ -1,5 +1,66 @@
 {
   "week_end": "2025-08-18",
-  "generated_at": "2025-08-18T01:41:22.077648",
-  "data": []
+  "generated_at": "2025-08-18T15:26:44.167470",
+  "data": [
+    {
+      "ticker": "MSTR",
+      "company_name": "Strategy Inc.",
+      "stock_close": 366.32,
+      "stock_pct_change": -1.78,
+      "coin": "BTC",
+      "coin_close": 115433,
+      "coin_pct_change": -2.23,
+      "holding_qty": 628791,
+      "holding_pct_of_supply": 3.1585,
+      "market_cap": 2297664008877.1064
+    },
+    {
+      "ticker": "SBET",
+      "company_name": "SharpLink Gaming Ltd.",
+      "stock_close": 19.85,
+      "stock_pct_change": -15.5,
+      "coin": "ETH",
+      "coin_close": 4252.17,
+      "coin_pct_change": -4.89,
+      "holding_qty": 521939,
+      "holding_pct_of_supply": 0.4324,
+      "market_cap": 513185751389.87646
+    },
+    {
+      "ticker": "BNC",
+      "company_name": "BNB Network Company",
+      "stock_close": 24.86,
+      "stock_pct_change": -11.81,
+      "coin": "BNB",
+      "coin_close": 830.2,
+      "coin_pct_change": -2.69,
+      "holding_qty": 50000,
+      "holding_pct_of_supply": 0.0359,
+      "market_cap": 115632111851.8142
+    },
+    {
+      "ticker": "HYPD",
+      "company_name": "Hyperion DeFi, Inc.",
+      "stock_close": 7.2,
+      "stock_pct_change": 7.62,
+      "coin": "HYPE",
+      "coin_close": 43.56,
+      "coin_pct_change": -7.56,
+      "holding_qty": 1535772,
+      "holding_pct_of_supply": 0.4601,
+      "market_cap": 14539175783.194384
+    },
+    {
+      "ticker": "VERB",
+      "company_name": "VERB Technology Company Inc.",
+      "stock_close": 22.45,
+      "stock_pct_change": 23.69,
+      "coin": "TON",
+      "coin_close": 3.36,
+      "coin_pct_change": -3.94,
+      "holding_qty": 100000,
+      "holding_pct_of_supply": 0.0039,
+      "market_cap": 8619094741.329638
+    }
+  ]
 }
