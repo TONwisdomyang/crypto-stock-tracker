@@ -388,7 +388,7 @@ class CryptoStockETL:
         }
     
     def save_data(self, data: Dict[str, Any]) -> None:
-        """Save processed data to JSON files"""
+        """Save processed data to JSON files and update historical baseline"""
         # Save weekly stats
         output_file = self.data_dir / "weekly_stats.json"
         with open(output_file, 'w') as f:
@@ -396,6 +396,22 @@ class CryptoStockETL:
         
         logger.info(f"Data saved to {output_file}")
         logger.info(f"Processed {len(data['data'])} companies")
+        
+        # Update historical baseline with incremental ETL
+        try:
+            from incremental_etl import IncrementalETL
+            incremental_etl = IncrementalETL()
+            incremental_etl.ensure_current_week_exists()
+            logger.info("Historical baseline updated via incremental ETL")
+        except Exception as e:
+            logger.warning(f"Could not update historical baseline: {e}")
+            # Fallback to convert_data.py for backward compatibility
+            try:
+                import subprocess
+                subprocess.run(['python', 'convert_data.py'], check=True, cwd=str(self.base_dir))
+                logger.info("Historical baseline updated via convert_data.py fallback")
+            except Exception as fallback_error:
+                logger.error(f"Both incremental ETL and fallback failed: {fallback_error}")
         
         # Create a summary file for quick access
         summary = {

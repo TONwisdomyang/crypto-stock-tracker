@@ -1,276 +1,276 @@
 {
-  "generated_at": "2025-08-18T20:54:58.452800",
+  "generated_at": "2025-08-18T21:08:12.928496",
   "timezone": "Asia/Taipei",
-  "baseline_time": "08:00",
-  "period": "2025-08-08 - Current Week",
+  "baseline_time": "16:00",
+  "period": "2025-07-18 - 2025-08-15",
   "data": {
-    "2025-W32": {
-      "baseline_date": "2025-08-08",
-      "week_start": "2025-08-08T08:00:00+08:00",
+    "2025-W29": {
+      "baseline_date": "2025-07-18",
+      "week_start": "2025-07-18T16:00:00-04:00",
       "companies": {
         "MSTR": {
           "company_name": "Strategy Inc.",
           "ticker_used": "MSTR",
-          "stock_price": 366.32,
+          "stock_price": 423.2200012207031,
           "coin": "BTC",
-          "coin_price": 118405.6,
-          "coin_id": "btc"
+          "coin_price": 119445.36520434043,
+          "coin_id": "bitcoin"
         },
         "SBET": {
           "company_name": "SharpLink Gaming Ltd.",
           "ticker_used": "SBET",
-          "stock_price": 19.85,
+          "stock_price": 28.979999542236328,
           "coin": "ETH",
-          "coin_price": 4554.29,
-          "coin_id": "eth"
+          "coin_price": 3481.8828152374017,
+          "coin_id": "ethereum"
         },
         "BNC": {
           "company_name": "BNB Network Company",
           "ticker_used": "BNC",
-          "stock_price": 24.86,
+          "stock_price": 9.079999923706055,
           "coin": "BNB",
-          "coin_price": 842.26,
-          "coin_id": "bnb"
+          "coin_price": 722.3981283678474,
+          "coin_id": "binancecoin"
         },
         "DFDV": {
           "company_name": "DeFi Development Corp",
           "ticker_used": "DFDV",
-          "stock_price": 18.69,
+          "stock_price": 24.40999984741211,
           "coin": "SOL",
-          "coin_price": 192.76,
-          "coin_id": "sol"
+          "coin_price": 176.0976453468298,
+          "coin_id": "solana"
         },
         "HYPD": {
           "company_name": "Hyperion DeFi, Inc.",
           "ticker_used": "HYPD",
-          "stock_price": 7.2,
+          "stock_price": 12.880000114440918,
           "coin": "HYPE",
-          "coin_price": 45.66,
-          "coin_id": "hype"
+          "coin_price": 45.97444370650513,
+          "coin_id": "hyperliquid"
         },
         "VERB": {
           "company_name": "VERB Technology Company Inc.",
           "ticker_used": "VERB",
-          "stock_price": 22.45,
+          "stock_price": 9.130000114440918,
           "coin": "TON",
-          "coin_price": 3.42,
-          "coin_id": "ton"
-        }
-      }
-    },
-    "2025-W31": {
-      "baseline_date": "2025-08-01",
-      "week_start": "2025-08-01T08:00:00+08:00",
-      "companies": {
-        "MSTR": {
-          "company_name": "Strategy Inc.",
-          "ticker_used": "MSTR",
-          "stock_price": 373.65,
-          "coin": "BTC",
-          "coin_price": 112532.68,
-          "coin_id": "btc"
-        },
-        "SBET": {
-          "company_name": "SharpLink Gaming Ltd.",
-          "ticker_used": "SBET",
-          "stock_price": 18.46,
-          "coin": "ETH",
-          "coin_price": 4488.34,
-          "coin_id": "eth"
-        },
-        "BNC": {
-          "company_name": "BNB Network Company",
-          "ticker_used": "BNC",
-          "stock_price": 26.03,
-          "coin": "BNB",
-          "coin_price": 812.07,
-          "coin_id": "bnb"
-        },
-        "DFDV": {
-          "company_name": "DeFi Development Corp",
-          "ticker_used": "DFDV",
-          "stock_price": 16.8,
-          "coin": "SOL",
-          "coin_price": 211.25,
-          "coin_id": "sol"
-        },
-        "HYPD": {
-          "company_name": "Hyperion DeFi, Inc.",
-          "ticker_used": "HYPD",
-          "stock_price": 7.34,
-          "coin": "HYPE",
-          "coin_price": 48.1,
-          "coin_id": "hype"
-        },
-        "VERB": {
-          "company_name": "VERB Technology Company Inc.",
-          "ticker_used": "VERB",
-          "stock_price": 23.84,
-          "coin": "TON",
-          "coin_price": 3.09,
-          "coin_id": "ton"
+          "coin_price": 3.2014431397054595,
+          "coin_id": "the-open-network"
         }
       }
     },
     "2025-W30": {
       "baseline_date": "2025-07-25",
-      "week_start": "2025-07-25T08:00:00+08:00",
+      "week_start": "2025-07-25T16:00:00-04:00",
       "companies": {
         "MSTR": {
           "company_name": "Strategy Inc.",
           "ticker_used": "MSTR",
-          "stock_price": 391.05,
+          "stock_price": 405.8900146484375,
           "coin": "BTC",
-          "coin_price": 103069.71,
-          "coin_id": "btc"
+          "coin_price": 118354.43517438594,
+          "coin_id": "bitcoin"
         },
         "SBET": {
           "company_name": "SharpLink Gaming Ltd.",
           "ticker_used": "SBET",
-          "stock_price": 19.38,
+          "stock_price": 21.989999771118164,
           "coin": "ETH",
-          "coin_price": 4868.35,
-          "coin_id": "eth"
+          "coin_price": 3708.4299352383423,
+          "coin_id": "ethereum"
         },
         "BNC": {
           "company_name": "BNB Network Company",
           "ticker_used": "BNC",
-          "stock_price": 27.23,
+          "stock_price": 8.875,
           "coin": "BNB",
-          "coin_price": 882.35,
-          "coin_id": "bnb"
+          "coin_price": 771.2312622168195,
+          "coin_id": "binancecoin"
         },
         "DFDV": {
           "company_name": "DeFi Development Corp",
           "ticker_used": "DFDV",
-          "stock_price": 17.64,
+          "stock_price": 19.18000030517578,
           "coin": "SOL",
-          "coin_price": 191.53,
-          "coin_id": "sol"
+          "coin_price": 182.56084286755046,
+          "coin_id": "solana"
         },
         "HYPD": {
           "company_name": "Hyperion DeFi, Inc.",
           "ticker_used": "HYPD",
-          "stock_price": 7.69,
+          "stock_price": 7.699999809265137,
           "coin": "HYPE",
-          "coin_price": 43.69,
-          "coin_id": "hype"
+          "coin_price": 42.14346559459078,
+          "coin_id": "hyperliquid"
         },
         "VERB": {
           "company_name": "VERB Technology Company Inc.",
           "ticker_used": "VERB",
-          "stock_price": 20.2,
+          "stock_price": 8.71500015258789,
           "coin": "TON",
-          "coin_price": 3.37,
-          "coin_id": "ton"
+          "coin_price": 3.1199958323993524,
+          "coin_id": "the-open-network"
         }
       }
     },
-    "2025-W29": {
-      "baseline_date": "2025-07-18",
-      "week_start": "2025-07-18T08:00:00+08:00",
+    "2025-W31": {
+      "baseline_date": "2025-08-01",
+      "week_start": "2025-08-01T16:00:00-04:00",
       "companies": {
         "MSTR": {
           "company_name": "Strategy Inc.",
           "ticker_used": "MSTR",
-          "stock_price": 408.81,
+          "stock_price": 366.6300048828125,
           "coin": "BTC",
-          "coin_price": 112324.29,
-          "coin_id": "btc"
+          "coin_price": 115700.00243915782,
+          "coin_id": "bitcoin"
         },
         "SBET": {
           "company_name": "SharpLink Gaming Ltd.",
           "ticker_used": "SBET",
-          "stock_price": 18.1,
+          "stock_price": 17.139999389648438,
           "coin": "ETH",
-          "coin_price": 5262.94,
-          "coin_id": "eth"
+          "coin_price": 3696.6628530851194,
+          "coin_id": "ethereum"
         },
         "BNC": {
           "company_name": "BNB Network Company",
           "ticker_used": "BNC",
-          "stock_price": 28.45,
+          "stock_price": 21.299999237060547,
           "coin": "BNB",
-          "coin_price": 804.12,
-          "coin_id": "bnb"
+          "coin_price": 783.0023910772859,
+          "coin_id": "binancecoin"
         },
         "DFDV": {
           "company_name": "DeFi Development Corp",
           "ticker_used": "DFDV",
-          "stock_price": 18.5,
+          "stock_price": 14.050000190734863,
           "coin": "SOL",
-          "coin_price": 207.36,
-          "coin_id": "sol"
+          "coin_price": 172.1630467364299,
+          "coin_id": "solana"
         },
         "HYPD": {
           "company_name": "Hyperion DeFi, Inc.",
           "ticker_used": "HYPD",
-          "stock_price": 8.04,
+          "stock_price": 7.079999923706055,
           "coin": "HYPE",
-          "coin_price": 47.38,
-          "coin_id": "hype"
+          "coin_price": 40.902421792848756,
+          "coin_id": "hyperliquid"
         },
         "VERB": {
           "company_name": "VERB Technology Company Inc.",
           "ticker_used": "VERB",
-          "stock_price": 21.23,
+          "stock_price": 9.510000228881836,
           "coin": "TON",
-          "coin_price": 3.66,
-          "coin_id": "ton"
+          "coin_price": 3.532505021849626,
+          "coin_id": "the-open-network"
         }
       }
     },
-    "2025-W28": {
-      "baseline_date": "2025-07-11",
-      "week_start": "2025-07-11T08:00:00+08:00",
+    "2025-W32": {
+      "baseline_date": "2025-08-08",
+      "week_start": "2025-08-08T16:00:00-04:00",
       "companies": {
         "MSTR": {
           "company_name": "Strategy Inc.",
           "ticker_used": "MSTR",
-          "stock_price": 346.17,
+          "stock_price": 395.1300048828125,
           "coin": "BTC",
-          "coin_price": 121957.77,
-          "coin_id": "btc"
+          "coin_price": 117463.47451085235,
+          "coin_id": "bitcoin"
         },
         "SBET": {
           "company_name": "SharpLink Gaming Ltd.",
           "ticker_used": "SBET",
-          "stock_price": 19.0,
+          "stock_price": 23.920000076293945,
           "coin": "ETH",
-          "coin_price": 4774.35,
-          "coin_id": "eth"
+          "coin_price": 3911.2609462690816,
+          "coin_id": "ethereum"
         },
         "BNC": {
           "company_name": "BNB Network Company",
           "ticker_used": "BNC",
-          "stock_price": 21.49,
+          "stock_price": 17.100000381469727,
           "coin": "BNB",
-          "coin_price": 872.38,
-          "coin_id": "bnb"
+          "coin_price": 787.1948285374559,
+          "coin_id": "binancecoin"
         },
         "DFDV": {
           "company_name": "DeFi Development Corp",
           "ticker_used": "DFDV",
-          "stock_price": 19.38,
+          "stock_price": 15.680000305175781,
           "coin": "SOL",
-          "coin_price": 165.02,
-          "coin_id": "sol"
+          "coin_price": 175.3851480311338,
+          "coin_id": "solana"
         },
         "HYPD": {
           "company_name": "Hyperion DeFi, Inc.",
           "ticker_used": "HYPD",
-          "stock_price": 6.8,
+          "stock_price": 7.460000038146973,
           "coin": "HYPE",
-          "coin_price": 51.22,
-          "coin_id": "hype"
+          "coin_price": 40.90232344019403,
+          "coin_id": "hyperliquid"
         },
         "VERB": {
           "company_name": "VERB Technology Company Inc.",
           "ticker_used": "VERB",
-          "stock_price": 22.27,
+          "stock_price": 16.799999237060547,
           "coin": "TON",
-          "coin_price": 3.33,
-          "coin_id": "ton"
+          "coin_price": 3.338550330801448,
+          "coin_id": "the-open-network"
+        }
+      }
+    },
+    "2025-W33": {
+      "baseline_date": "2025-08-15",
+      "week_start": "2025-08-15T16:00:00-04:00",
+      "companies": {
+        "MSTR": {
+          "company_name": "Strategy Inc.",
+          "ticker_used": "MSTR",
+          "stock_price": 366.32000732421875,
+          "coin": "BTC",
+          "coin_price": 118405.59579823953,
+          "coin_id": "bitcoin"
+        },
+        "SBET": {
+          "company_name": "SharpLink Gaming Ltd.",
+          "ticker_used": "SBET",
+          "stock_price": 19.850000381469727,
+          "coin": "ETH",
+          "coin_price": 4554.291501538621,
+          "coin_id": "ethereum"
+        },
+        "BNC": {
+          "company_name": "BNB Network Company",
+          "ticker_used": "BNC",
+          "stock_price": 24.860000610351562,
+          "coin": "BNB",
+          "coin_price": 842.2643191559952,
+          "coin_id": "binancecoin"
+        },
+        "DFDV": {
+          "company_name": "DeFi Development Corp",
+          "ticker_used": "DFDV",
+          "stock_price": 18.690000534057617,
+          "coin": "SOL",
+          "coin_price": 192.75680405400084,
+          "coin_id": "solana"
+        },
+        "HYPD": {
+          "company_name": "Hyperion DeFi, Inc.",
+          "ticker_used": "HYPD",
+          "stock_price": 7.199999809265137,
+          "coin": "HYPE",
+          "coin_price": 45.661212677278435,
+          "coin_id": "hyperliquid"
+        },
+        "VERB": {
+          "company_name": "VERB Technology Company Inc.",
+          "ticker_used": "VERB",
+          "stock_price": 22.450000762939453,
+          "coin": "TON",
+          "coin_price": 3.4186136152315196,
+          "coin_id": "the-open-network"
         }
       }
     }
