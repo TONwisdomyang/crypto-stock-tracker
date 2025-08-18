@@ -17,6 +17,7 @@ from typing import Dict, List, Any, Optional
 import requests
 import yfinance as yf
 from pathlib import Path
+import pytz
 
 # Configure logging
 logging.basicConfig(
@@ -42,6 +43,34 @@ class CryptoStockETL:
         self.rate_limit_delay = 12  # seconds between API calls (5 calls/minute)
         self.max_retries = 5  # Increased retry attempts
         self.backoff_multiplier = 2  # Exponential backoff multiplier
+        
+        # Time zone configuration
+        self.us_eastern = pytz.timezone('US/Eastern')
+        self.taiwan_tz = pytz.timezone('Asia/Taipei')
+    
+    def get_last_friday_close(self) -> datetime:
+        """Get the last Friday's US market close time (4:00 PM ET) converted to Taiwan time"""
+        now = datetime.now(self.taiwan_tz)
+        
+        # Find the most recent Friday
+        days_since_friday = (now.weekday() - 4) % 7  # Friday is day 4
+        if days_since_friday == 0 and now.hour < 5:  # If it's Friday before 5 AM Taiwan time (still before market close)
+            days_since_friday = 7
+            
+        last_friday = now - timedelta(days=days_since_friday)
+        
+        # Set to 4:00 PM Eastern Time (market close)
+        market_close_et = self.us_eastern.localize(
+            datetime(last_friday.year, last_friday.month, last_friday.day, 16, 0, 0)
+        )
+        
+        # Convert to Taiwan time for logging
+        market_close_tw = market_close_et.astimezone(self.taiwan_tz)
+        
+        logger.info(f"Using market close time: {market_close_tw.strftime('%Y-%m-%d %H:%M:%S %Z')} "
+                   f"(ET: {market_close_et.strftime('%Y-%m-%d %H:%M:%S %Z')})")
+        
+        return market_close_et
         
     def load_holdings(self) -> Dict[str, Any]:
         """Load company crypto holdings configuration"""
@@ -83,51 +112,99 @@ class CryptoStockETL:
         with open(holdings_file, 'r') as f:
             return json.load(f)
     
-    def fetch_stock_data(self, ticker: str, period: str = "5d") -> Optional[Dict[str, Any]]:
-        """Fetch stock data from Yahoo Finance"""
+    def fetch_stock_data(self, ticker: str, target_date: datetime = None) -> Optional[Dict[str, Any]]:
+        """Fetch stock data from Yahoo Finance for a specific date (defaults to last Friday close)"""
         try:
+            if target_date is None:
+                target_date = self.get_last_friday_close()
+            
             stock = yf.Ticker(ticker)
-            hist = stock.history(period=period)
+            
+            # Get data for the target date and some previous days for comparison
+            start_date = target_date - timedelta(days=10)  # Get 10 days of data to ensure we have enough
+            end_date = target_date + timedelta(days=1)
+            
+            hist = stock.history(start=start_date, end=end_date)
             
             if hist.empty:
                 logger.warning(f"No stock data found for {ticker}")
                 return None
             
-            # Get latest and previous close
-            latest_close = float(hist['Close'].iloc[-1])
-            previous_close = float(hist['Close'].iloc[-2]) if len(hist) > 1 else latest_close
+            # Convert target_date to market timezone for comparison
+            target_date_et = target_date.astimezone(self.us_eastern).date()
+            
+            # Find the close price for the target date
+            target_close = None
+            target_date_str = None
+            
+            # Look for exact date match first
+            for date, row in hist.iterrows():
+                market_date = date.date()
+                if market_date == target_date_et:
+                    target_close = float(row['Close'])
+                    target_date_str = market_date.strftime('%Y-%m-%d')
+                    break
+            
+            # If no exact match, find the closest previous trading day
+            if target_close is None:
+                for date, row in reversed(list(hist.iterrows())):
+                    market_date = date.date()
+                    if market_date <= target_date_et:
+                        target_close = float(row['Close'])
+                        target_date_str = market_date.strftime('%Y-%m-%d')
+                        logger.info(f"{ticker}: Using closest trading day {target_date_str} instead of target {target_date_et}")
+                        break
+            
+            if target_close is None:
+                logger.warning(f"No stock price found for {ticker} around {target_date_et}")
+                return None
+            
+            # Get previous close for percentage calculation
+            hist_list = list(hist.iterrows())
+            previous_close = target_close  # Default fallback
+            
+            for i, (date, row) in enumerate(hist_list):
+                if date.date().strftime('%Y-%m-%d') == target_date_str and i > 0:
+                    previous_close = float(hist_list[i-1][1]['Close'])
+                    break
             
             # Calculate percentage change
-            pct_change = ((latest_close - previous_close) / previous_close) * 100 if previous_close != 0 else 0
+            pct_change = ((target_close - previous_close) / previous_close) * 100 if previous_close != 0 and previous_close != target_close else 0
+            
+            logger.info(f"{ticker} stock price on {target_date_str}: ${target_close:.2f} (change: {pct_change:+.2f}%)")
             
             return {
                 "ticker": ticker,
-                "close": latest_close,
+                "close": target_close,
                 "pct_change": pct_change,
-                "timestamp": datetime.now().isoformat()
+                "date": target_date_str,
+                "timestamp": target_date.isoformat()
             }
             
         except Exception as e:
             logger.error(f"Error fetching stock data for {ticker}: {e}")
             return None
     
-    def fetch_crypto_data(self, coin_id: str) -> Optional[Dict[str, Any]]:
-        """Fetch cryptocurrency data from CoinGecko with enhanced retry logic"""
+    def fetch_crypto_data(self, coin_id: str, target_date: datetime = None) -> Optional[Dict[str, Any]]:
+        """Fetch cryptocurrency data from CoinGecko for a specific date (defaults to last Friday close)"""
         import time
+        
+        if target_date is None:
+            target_date = self.get_last_friday_close()
         
         # Always wait before making API call to respect rate limits
         time.sleep(self.rate_limit_delay)
         
         for attempt in range(self.max_retries):
             try:
-                # Get current price and market data
-                url = f"{self.coingecko_base_url}/simple/price"
+                # Format date for CoinGecko API (DD-MM-YYYY format)
+                date_str = target_date.strftime('%d-%m-%Y')
+                
+                # Use historical data API to get price at specific date
+                url = f"{self.coingecko_base_url}/coins/{coin_id}/history"
                 params = {
-                    'ids': coin_id,
-                    'vs_currencies': 'usd',
-                    'include_24hr_change': 'true',
-                    'include_24hr_vol': 'true',
-                    'include_market_cap': 'true'
+                    'date': date_str,
+                    'localization': 'false'
                 }
                 
                 response = requests.get(url, params=params, headers=self.request_headers, timeout=30)
@@ -141,22 +218,51 @@ class CryptoStockETL:
                 response.raise_for_status()
                 data = response.json()
                 
-                if coin_id not in data:
-                    logger.warning(f"No crypto data found for {coin_id}")
+                if not data or 'market_data' not in data:
+                    logger.warning(f"No historical crypto data found for {coin_id} on {date_str}")
                     return None
                 
-                coin_data = data[coin_id]
+                market_data = data['market_data']
+                current_price = market_data.get('current_price', {}).get('usd', 0)
+                
+                if current_price == 0:
+                    logger.warning(f"No USD price found for {coin_id} on {date_str}")
+                    return None
+                
+                # Try to get previous day's data for percentage calculation
+                prev_date = target_date - timedelta(days=1)
+                prev_date_str = prev_date.strftime('%d-%m-%Y')
+                
+                # Small delay before second API call
+                time.sleep(self.rate_limit_delay)
+                
+                prev_response = requests.get(
+                    f"{self.coingecko_base_url}/coins/{coin_id}/history",
+                    params={'date': prev_date_str, 'localization': 'false'},
+                    headers=self.request_headers, 
+                    timeout=30
+                )
+                
+                previous_price = current_price  # Fallback
+                if prev_response.status_code == 200:
+                    prev_data = prev_response.json()
+                    if prev_data and 'market_data' in prev_data:
+                        previous_price = prev_data['market_data'].get('current_price', {}).get('usd', current_price)
+                
+                # Calculate percentage change
+                pct_change = ((current_price - previous_price) / previous_price) * 100 if previous_price != 0 and previous_price != current_price else 0
                 
                 result = {
                     "coin_id": coin_id,
-                    "close": coin_data['usd'],
-                    "pct_change": coin_data.get('usd_24h_change', 0),
-                    "volume": coin_data.get('usd_24h_vol', 0),
-                    "market_cap": coin_data.get('usd_market_cap', 0),
-                    "timestamp": datetime.now().isoformat()
+                    "close": current_price,
+                    "pct_change": pct_change,
+                    "date": target_date.strftime('%Y-%m-%d'),
+                    "timestamp": target_date.isoformat(),
+                    "market_cap": market_data.get('market_cap', {}).get('usd', 0),
+                    "volume": market_data.get('total_volume', {}).get('usd', 0)
                 }
                 
-                logger.info(f"Successfully fetched crypto data for {coin_id}: ${coin_data['usd']}")
+                logger.info(f"Successfully fetched crypto data for {coin_id} on {date_str}: ${current_price:.2f} (change: {pct_change:+.2f}%)")
                 return result
                 
             except requests.exceptions.HTTPError as e:
@@ -216,28 +322,31 @@ class CryptoStockETL:
         return 0.0
     
     def process_weekly_data(self) -> Dict[str, Any]:
-        """Main ETL process to generate weekly data"""
+        """Main ETL process to generate weekly data using synchronized Friday market close times"""
         holdings = self.load_holdings()
-        week_end = datetime.now().strftime('%Y-%m-%d')
+        
+        # Get the target date (last Friday market close)
+        target_date = self.get_last_friday_close()
+        week_end = target_date.strftime('%Y-%m-%d')
         
         processed_data = []
         crypto_cache = {}  # Cache crypto data to avoid duplicate API calls
         
-        logger.info(f"Processing data for {len(holdings)} companies...")
+        logger.info(f"Processing synchronized data for {len(holdings)} companies using target date: {week_end}")
         
         for ticker, holding_info in holdings.items():
-            logger.info(f"Processing {ticker}...")
+            logger.info(f"Processing {ticker} for {week_end}...")
             
-            # Fetch stock data
-            stock_data = self.fetch_stock_data(ticker)
+            # Fetch stock data for the target date
+            stock_data = self.fetch_stock_data(ticker, target_date)
             if not stock_data:
                 logger.warning(f"Skipping {ticker} due to missing stock data")
                 continue
             
-            # Fetch crypto data (use cache if available)
+            # Fetch crypto data for the same target date (use cache if available)
             coin_id = holding_info['coin_id']
             if coin_id not in crypto_cache:
-                crypto_data = self.fetch_crypto_data(coin_id)
+                crypto_data = self.fetch_crypto_data(coin_id, target_date)
                 if crypto_data:
                     crypto_cache[coin_id] = crypto_data
                 else:

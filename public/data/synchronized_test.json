@@ -1,0 +1,15 @@
+{
+  "generated_at": "2025-08-15T16:00:00-04:00",
+  "target_date": "2025-08-15",
+  "market_close_et": "2025-08-15 16:00:00 EDT",
+  "market_close_tw": "2025-08-16 04:00:00 CST",
+  "synchronized_data": {
+    "VERB": {
+      "stock_price": 22.450000762939453,
+      "stock_change": 23.691466858319306,
+      "coin": "TON",
+      "coin_price": 3.4186136152315196,
+      "coin_change": 0
+    }
+  }
+}
