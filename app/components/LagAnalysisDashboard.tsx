@@ -68,7 +68,7 @@ export default function LagAnalysisDashboard() {
     timeout: 20000,
     staleTime: 600000, // 10 minutes cache for historical data
     refetchOnFocus: false, // Historical data doesn't change frequently
-    cacheKey: `lag-analysis-${selectedTicker}`,
+    cacheKey: 'complete-historical-baseline', // 使用統一的緩存鍵，避免股票間的緩存污染
     fallbackData: fallbackHistoricalData, // Provide fallback data
   });
 
@@ -84,15 +84,22 @@ export default function LagAnalysisDashboard() {
     if (rawData) {
       try {
         console.log('Raw data structure:', Object.keys(rawData));
-        const processedData = processHistoricalDataForLagAnalysis(rawData, selectedTicker);
-        console.log('Processed data:', { 
+        console.log(`Processing data for ticker: ${selectedTicker}`);
+        
+        // 確保每次處理都使用新的數據引用，避免狀態污染
+        const processedData = processHistoricalDataForLagAnalysis(JSON.parse(JSON.stringify(rawData)), selectedTicker);
+        
+        console.log(`Processed data for ${selectedTicker}:`, { 
           weeklyDataCount: processedData.weeklyData.length,
-          lagEventsCount: processedData.lagEvents.length 
+          lagEventsCount: processedData.lagEvents.length,
+          firstWeekStockPrice: processedData.weeklyData[0]?.stockPrice,
+          firstWeekCryptoPrice: processedData.weeklyData[0]?.cryptoPrice
         });
+        
         setWeeklyData(processedData.weeklyData);
         setLagEvents(processedData.lagEvents);
       } catch (error) {
-        console.error('Error processing historical data:', error);
+        console.error(`Error processing historical data for ${selectedTicker}:`, error);
         setWeeklyData([]);
         setLagEvents([]);
       }
@@ -104,9 +111,26 @@ export default function LagAnalysisDashboard() {
     const weeklyData: WeeklyData[] = [];
     const lagEvents: LagEvent[] = [];
     
+    console.log(`開始處理 ${ticker} 的數據...`);
+    
     // 验证数据结构
     if (!data || typeof data !== 'object' || !data.data || typeof data.data !== 'object') {
       console.error('Invalid data structure in processHistoricalDataForLagAnalysis');
+      return { weeklyData, lagEvents };
+    }
+    
+    // 驗證指定股票是否存在於數據中
+    const availableCompanies = new Set<string>();
+    Object.values(data.data).forEach((weekData: any) => {
+      if (weekData?.companies) {
+        Object.keys(weekData.companies).forEach(company => availableCompanies.add(company));
+      }
+    });
+    
+    console.log(`可用公司列表:`, Array.from(availableCompanies));
+    
+    if (!availableCompanies.has(ticker)) {
+      console.error(`股票 ${ticker} 不存在於數據中，可用股票:`, Array.from(availableCompanies));
       return { weeklyData, lagEvents };
     }
     
@@ -170,18 +194,33 @@ export default function LagAnalysisDashboard() {
       if (weekData.companies && typeof weekData.companies === 'object' && weekData.companies[ticker]) {
         const company = weekData.companies[ticker];
         
+        console.log(`處理週期 ${weekKey} 的 ${ticker} 數據:`, {
+          stockPrice: company?.stock_price,
+          coinPrice: company?.coin_price,
+          coin: company?.coin
+        });
+        
         // 驗證公司數據
         if (!company || typeof company !== 'object') {
+          console.warn(`週期 ${weekKey} 的 ${ticker} 公司數據無效`);
           continue;
         }
         
         // 驗證價格數據
         if (typeof company.stock_price !== 'number' || typeof company.coin_price !== 'number') {
+          console.warn(`週期 ${weekKey} 的 ${ticker} 價格數據類型無效:`, {
+            stockPriceType: typeof company.stock_price,
+            coinPriceType: typeof company.coin_price
+          });
           continue;
         }
         
         // 檢查價格是否為有效數字
         if (!isFinite(company.stock_price) || !isFinite(company.coin_price)) {
+          console.warn(`週期 ${weekKey} 的 ${ticker} 價格數據非有限數字:`, {
+            stockPrice: company.stock_price,
+            coinPrice: company.coin_price
+          });
           continue;
         }
         
@@ -239,8 +278,17 @@ export default function LagAnalysisDashboard() {
         }
 
         previousWeekData = company;
+      } else {
+        console.warn(`週期 ${weekKey} 沒有找到 ${ticker} 的數據`);
       }
     }
+    
+    console.log(`${ticker} 數據處理完成:`, {
+      totalWeeksProcessed: weeklyData.length,
+      lagEventsDetected: lagEvents.length,
+      firstWeekData: weeklyData[0],
+      lastWeekData: weeklyData[weeklyData.length - 1]
+    });
 
     return { weeklyData, lagEvents };
   };
