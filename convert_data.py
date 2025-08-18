@@ -73,15 +73,30 @@ def convert_weekly_to_historical():
         prev_companies = {}
         variation_factor = 1 + (weeks_back * 0.02)  # Increasing variation over time
         
-        for ticker, company in companies.items():
-            # Create realistic price variations
-            stock_variation = 0.95 + (0.1 * (weeks_back % 3) / 2)  # -5% to +5%
-            crypto_variation = 0.92 + (0.16 * (weeks_back % 4) / 3)  # -8% to +8%
+        for idx, (ticker, company) in enumerate(companies.items()):
+            # Create unique, realistic price variations for each ticker
+            # Use ticker index and weeks_back to create distinct patterns
+            ticker_seed = hash(ticker) % 100  # Unique seed per ticker
+            
+            # Different variation patterns for each ticker
+            base_stock_var = 0.95 + (0.1 * ((weeks_back + ticker_seed) % 7) / 6)  # -5% to +5%
+            base_crypto_var = 0.92 + (0.16 * ((weeks_back * 2 + ticker_seed) % 11) / 10)  # -8% to +8%
+            
+            # Add ticker-specific randomness
+            stock_adjustment = 1 + (((ticker_seed + weeks_back * 3) % 21 - 10) / 100)  # ±10%
+            crypto_adjustment = 1 + (((ticker_seed * 2 + weeks_back * 5) % 31 - 15) / 100)  # ±15%
+            
+            final_stock_var = base_stock_var * stock_adjustment
+            final_crypto_var = base_crypto_var * crypto_adjustment
+            
+            # Ensure variations stay within reasonable bounds
+            final_stock_var = max(0.85, min(1.15, final_stock_var))  # 15% max deviation
+            final_crypto_var = max(0.80, min(1.20, final_crypto_var))  # 20% max deviation
             
             prev_companies[ticker] = {
                 **company,
-                "stock_price": round(company["stock_price"] * stock_variation, 2),
-                "coin_price": round(company["coin_price"] * crypto_variation, 2),
+                "stock_price": round(company["stock_price"] * final_stock_var, 2),
+                "coin_price": round(company["coin_price"] * final_crypto_var, 2),
             }
         
         historical_data["data"][prev_week_key] = {

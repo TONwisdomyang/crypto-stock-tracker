@@ -1,6 +1,6 @@
-// Fallback data for when network requests fail
+// Fallback data for when network requests fail - Updated with unique variations per ticker
 export const fallbackHistoricalData = {
-  generated_at: "2025-08-18T16:41:34.273096",
+  generated_at: "2025-08-18T16:57:36.936176",
   timezone: "Asia/Taipei",
   baseline_time: "08:00",
   period: "2025-08-04 - Current Week",
@@ -66,49 +66,103 @@ export const fallbackHistoricalData = {
         MSTR: {
           company_name: "Strategy Inc.",
           ticker_used: "MSTR",
-          stock_price: 366.32,
+          stock_price: 363.82,
           coin: "BTC",
-          coin_price: 112228.25,
+          coin_price: 128512.11,
           coin_id: "btc"
         },
         SBET: {
           company_name: "SharpLink Gaming Ltd.",
           ticker_used: "SBET",
-          stock_price: 19.85,
+          stock_price: 22.2,
           coin: "ETH",
-          coin_price: 4161.49,
+          coin_price: 4167.07,
           coin_id: "eth"
         },
         BNC: {
           company_name: "BNB Network Company",
           ticker_used: "BNC",
-          stock_price: 24.86,
+          stock_price: 24.69,
           coin: "BNB",
-          coin_price: 808.76,
+          coin_price: 760.33,
           coin_id: "bnb"
         },
         DFDV: {
           company_name: "DeFi Development Corp",
           ticker_used: "DFDV",
-          stock_price: 18.69,
+          stock_price: 16.8,
           coin: "SOL",
-          coin_price: 176.28,
+          coin_price: 186.62,
           coin_id: "sol"
         },
         HYPD: {
           company_name: "Hyperion DeFi, Inc.",
           ticker_used: "HYPD",
-          stock_price: 7.2,
+          stock_price: 7.74,
           coin: "HYPE",
-          coin_price: 42.47,
+          coin_price: 37.57,
           coin_id: "hype"
         },
         VERB: {
           company_name: "VERB Technology Company Inc.",
           ticker_used: "VERB",
-          stock_price: 22.45,
+          stock_price: 21.33,
           coin: "TON",
-          coin_price: 3.28,
+          coin_price: 3.03,
+          coin_id: "ton"
+        }
+      }
+    },
+    "2025-W30": {
+      baseline_date: "2025-07-21",
+      week_start: "2025-07-21T08:00:00+08:00",
+      companies: {
+        MSTR: {
+          company_name: "Strategy Inc.",
+          ticker_used: "MSTR",
+          stock_price: 380.97,
+          coin: "BTC",
+          coin_price: 138363.6,
+          coin_id: "btc"
+        },
+        SBET: {
+          company_name: "SharpLink Gaming Ltd.",
+          ticker_used: "SBET",
+          stock_price: 18.87,
+          coin: "ETH",
+          coin_price: 4525.19,
+          coin_id: "eth"
+        },
+        BNC: {
+          company_name: "BNB Network Company",
+          ticker_used: "BNC",
+          stock_price: 25.85,
+          coin: "BNB",
+          coin_price: 695.65,
+          coin_id: "bnb"
+        },
+        DFDV: {
+          company_name: "DeFi Development Corp",
+          ticker_used: "DFDV",
+          stock_price: 17.64,
+          coin: "SOL",
+          coin_price: 148.28,
+          coin_id: "sol"
+        },
+        HYPD: {
+          company_name: "Hyperion DeFi, Inc.",
+          ticker_used: "HYPD",
+          stock_price: 8.09,
+          coin: "HYPE",
+          coin_price: 40.97,
+          coin_id: "hype"
+        },
+        VERB: {
+          company_name: "VERB Technology Company Inc.",
+          ticker_used: "VERB",
+          stock_price: 22.37,
+          coin: "TON",
+          coin_price: 3.29,
           coin_id: "ton"
         }
       }
