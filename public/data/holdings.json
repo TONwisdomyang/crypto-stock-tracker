@@ -34,5 +34,29 @@
     "coin": "TON",
     "holding_qty": 100000,
     "coin_id": "the-open-network"
+  },
+  "UPXI": {
+    "company_name": "UPXI Corp",
+    "coin": "SOL",
+    "holding_qty": 850000,
+    "coin_id": "solana"
+  },
+  "BMNR": {
+    "company_name": "Bitmine Immersion Technologies Inc",
+    "coin": "ETH",
+    "holding_qty": 250000,
+    "coin_id": "ethereum"
+  },
+  "MARA": {
+    "company_name": "MARA Holdings Inc",
+    "coin": "BTC",
+    "holding_qty": 50639,
+    "coin_id": "bitcoin"
+  },
+  "CEP": {
+    "company_name": "XXI Century Capital Corp",
+    "coin": "BTC",
+    "holding_qty": 43514,
+    "coin_id": "bitcoin"
   }
 }

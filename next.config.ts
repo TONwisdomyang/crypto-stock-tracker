@@ -72,8 +72,12 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 86400, // 1 day
   },
 
-  // Output configuration for dynamic rendering (works better with data fetching)
-  output: 'standalone',
+  // Output configuration for static export to include all assets
+  output: 'export',
+  trailingSlash: true,
+  
+  // Ensure static assets are properly copied
+  distDir: 'out',
   
   // Experimental optimizations (disabled for stability)
   experimental: {

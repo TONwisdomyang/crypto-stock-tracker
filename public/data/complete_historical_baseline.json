@@ -1,8 +1,8 @@
 {
-  "generated_at": "2025-08-18T21:08:12.928496",
+  "generated_at": "2025-08-24T20:23:52.836898",
   "timezone": "Asia/Taipei",
   "baseline_time": "16:00",
-  "period": "2025-07-18 - 2025-08-15",
+  "period": "2025-07-18 - 2025-08-22",
   "data": {
     "2025-W29": {
       "baseline_date": "2025-07-18",
@@ -55,6 +55,38 @@
           "coin": "TON",
           "coin_price": 3.2014431397054595,
           "coin_id": "the-open-network"
+        },
+        "UPXI": {
+          "company_name": "UPXI Corp",
+          "ticker_used": "UPXI",
+          "stock_price": 7.48,
+          "coin": "SOL",
+          "coin_price": 176.0976453468298,
+          "coin_id": "solana"
+        },
+        "BMNR": {
+          "company_name": "Bitmine Immersion Technologies Inc",
+          "ticker_used": "BMNR",
+          "stock_price": 50.0,
+          "coin": "ETH",
+          "coin_price": 3481.8828152374017,
+          "coin_id": "ethereum"
+        },
+        "MARA": {
+          "company_name": "MARA Holdings Inc",
+          "ticker_used": "MARA",
+          "stock_price": 19.51,
+          "coin": "BTC",
+          "coin_price": 119445.36520434043,
+          "coin_id": "bitcoin"
+        },
+        "CEP": {
+          "company_name": "XXI Century Capital Corp",
+          "ticker_used": "CEP",
+          "stock_price": 31.3,
+          "coin": "BTC",
+          "coin_price": 119445.36520434043,
+          "coin_id": "bitcoin"
         }
       }
     },
@@ -109,6 +141,38 @@
           "coin": "TON",
           "coin_price": 3.1199958323993524,
           "coin_id": "the-open-network"
+        },
+        "UPXI": {
+          "company_name": "UPXI Corp",
+          "ticker_used": "UPXI",
+          "stock_price": 6.11,
+          "coin": "SOL",
+          "coin_price": 182.56084286755046,
+          "coin_id": "solana"
+        },
+        "BMNR": {
+          "company_name": "Bitmine Immersion Technologies Inc",
+          "ticker_used": "BMNR",
+          "stock_price": 52.0,
+          "coin": "ETH",
+          "coin_price": 3708.4299352383423,
+          "coin_id": "ethereum"
+        },
+        "MARA": {
+          "company_name": "MARA Holdings Inc",
+          "ticker_used": "MARA",
+          "stock_price": 17.25,
+          "coin": "BTC",
+          "coin_price": 118354.43517438594,
+          "coin_id": "bitcoin"
+        },
+        "CEP": {
+          "company_name": "XXI Century Capital Corp",
+          "ticker_used": "CEP",
+          "stock_price": 28.19,
+          "coin": "BTC",
+          "coin_price": 118354.43517438594,
+          "coin_id": "bitcoin"
         }
       }
     },
@@ -163,6 +227,38 @@
           "coin": "TON",
           "coin_price": 3.532505021849626,
           "coin_id": "the-open-network"
+        },
+        "UPXI": {
+          "company_name": "UPXI Corp",
+          "ticker_used": "UPXI",
+          "stock_price": 4.6,
+          "coin": "SOL",
+          "coin_price": 172.1630467364299,
+          "coin_id": "solana"
+        },
+        "BMNR": {
+          "company_name": "Bitmine Immersion Technologies Inc",
+          "ticker_used": "BMNR",
+          "stock_price": 55.0,
+          "coin": "ETH",
+          "coin_price": 3696.6628530851194,
+          "coin_id": "ethereum"
+        },
+        "MARA": {
+          "company_name": "MARA Holdings Inc",
+          "ticker_used": "MARA",
+          "stock_price": 15.5,
+          "coin": "BTC",
+          "coin_price": 115700.00243915782,
+          "coin_id": "bitcoin"
+        },
+        "CEP": {
+          "company_name": "XXI Century Capital Corp",
+          "ticker_used": "CEP",
+          "stock_price": 26.5,
+          "coin": "BTC",
+          "coin_price": 115700.00243915782,
+          "coin_id": "bitcoin"
         }
       }
     },
@@ -217,6 +313,38 @@
           "coin": "TON",
           "coin_price": 3.338550330801448,
           "coin_id": "the-open-network"
+        },
+        "UPXI": {
+          "company_name": "UPXI Corp",
+          "ticker_used": "UPXI",
+          "stock_price": 6.04,
+          "coin": "SOL",
+          "coin_price": 175.3851480311338,
+          "coin_id": "solana"
+        },
+        "BMNR": {
+          "company_name": "Bitmine Immersion Technologies Inc",
+          "ticker_used": "BMNR",
+          "stock_price": 58.0,
+          "coin": "ETH",
+          "coin_price": 3911.2609462690816,
+          "coin_id": "ethereum"
+        },
+        "MARA": {
+          "company_name": "MARA Holdings Inc",
+          "ticker_used": "MARA",
+          "stock_price": 15.38,
+          "coin": "BTC",
+          "coin_price": 117463.47451085235,
+          "coin_id": "bitcoin"
+        },
+        "CEP": {
+          "company_name": "XXI Century Capital Corp",
+          "ticker_used": "CEP",
+          "stock_price": 26.83,
+          "coin": "BTC",
+          "coin_price": 117463.47451085235,
+          "coin_id": "bitcoin"
         }
       }
     },
@@ -271,6 +399,124 @@
           "coin": "TON",
           "coin_price": 3.4186136152315196,
           "coin_id": "the-open-network"
+        },
+        "UPXI": {
+          "company_name": "UPXI Corp",
+          "ticker_used": "UPXI",
+          "stock_price": 7.35,
+          "coin": "SOL",
+          "coin_price": 192.75680405400084,
+          "coin_id": "solana"
+        },
+        "BMNR": {
+          "company_name": "Bitmine Immersion Technologies Inc",
+          "ticker_used": "BMNR",
+          "stock_price": 54.87,
+          "coin": "ETH",
+          "coin_price": 4554.291501538621,
+          "coin_id": "ethereum"
+        },
+        "MARA": {
+          "company_name": "MARA Holdings Inc",
+          "ticker_used": "MARA",
+          "stock_price": 15.67,
+          "coin": "BTC",
+          "coin_price": 118405.59579823953,
+          "coin_id": "bitcoin"
+        },
+        "CEP": {
+          "company_name": "XXI Century Capital Corp",
+          "ticker_used": "CEP",
+          "stock_price": 27.22,
+          "coin": "BTC",
+          "coin_price": 118405.59579823953,
+          "coin_id": "bitcoin"
+        }
+      }
+    },
+    "2025-W34": {
+      "baseline_date": "2025-08-22",
+      "week_start": "2025-08-22T16:00:00-04:00",
+      "companies": {
+        "MSTR": {
+          "company_name": "Strategy Inc.",
+          "ticker_used": "MSTR",
+          "stock_price": 358.1300048828125,
+          "coin": "BTC",
+          "coin_price": 112414.39987336512,
+          "coin_id": "bitcoin"
+        },
+        "SBET": {
+          "company_name": "SharpLink Gaming Ltd.",
+          "ticker_used": "SBET",
+          "stock_price": 20.8700008392334,
+          "coin": "ETH",
+          "coin_price": 4224.438592580698,
+          "coin_id": "ethereum"
+        },
+        "BNC": {
+          "company_name": "BNB Network Company",
+          "ticker_used": "BNC",
+          "stock_price": 27.31999969482422,
+          "coin": "BNB",
+          "coin_price": 838.3671602294102,
+          "coin_id": "binancecoin"
+        },
+        "DFDV": {
+          "company_name": "DeFi Development Corp",
+          "ticker_used": "DFDV",
+          "stock_price": 20.209999084472656,
+          "coin": "SOL",
+          "coin_price": 180.24297051206173,
+          "coin_id": "solana"
+        },
+        "HYPD": {
+          "company_name": "Hyperion DeFi, Inc.",
+          "ticker_used": "HYPD",
+          "stock_price": 6.159999847412109,
+          "coin": "HYPE",
+          "coin_price": 40.505160346692314,
+          "coin_id": "hyperliquid"
+        },
+        "VERB": {
+          "company_name": "VERB Technology Company Inc.",
+          "ticker_used": "VERB",
+          "stock_price": 21.65999984741211,
+          "coin": "TON",
+          "coin_price": 3.3157921251602787,
+          "coin_id": "the-open-network"
+        },
+        "UPXI": {
+          "company_name": "UPXI Corp",
+          "ticker_used": "UPXI",
+          "stock_price": 7.929999828338623,
+          "coin": "SOL",
+          "coin_price": 180.24297051206173,
+          "coin_id": "solana"
+        },
+        "BMNR": {
+          "company_name": "Bitmine Immersion Technologies Inc",
+          "ticker_used": "BMNR",
+          "stock_price": 53.4900016784668,
+          "coin": "ETH",
+          "coin_price": 4224.438592580698,
+          "coin_id": "ethereum"
+        },
+        "MARA": {
+          "company_name": "MARA Holdings Inc",
+          "ticker_used": "MARA",
+          "stock_price": 16.290000915527344,
+          "coin": "BTC",
+          "coin_price": 112414.39987336512,
+          "coin_id": "bitcoin"
+        },
+        "CEP": {
+          "company_name": "XXI Century Capital Corp",
+          "ticker_used": "CEP",
+          "stock_price": 25.649999618530273,
+          "coin": "BTC",
+          "coin_price": 112414.39987336512,
+          "coin_id": "bitcoin"
         }
       }
     }

@@ -37,8 +37,20 @@
       "Bash(rg:*)",
       "Bash(pip install:*)",
       "WebFetch(domain:docs.anthropic.com)",
-      "Bash(claude --version)"
+      "Bash(claude --version)",
+      "Bash(git tag:*)",
+      "Bash(echo $PATH)",
+      "Bash(setx:*)",
+      "Bash(where claude)",
+      "Bash(C:UsersUser.localbinclaude.exe --version)",
+      "Bash(\"C:\\Users\\User\\.local\\bin\\claude.exe\" --version)",
+      "Bash(rm:*)",
+      "Bash(powershell:*)",
+      "Bash(claude update)",
+      "Bash(claude mcp add:*)",
+      "Bash(claude mcp:*)"
     ],
     "deny": []
-  }
+  },
+  "outputStyle": "Queen Coordinator"
 }

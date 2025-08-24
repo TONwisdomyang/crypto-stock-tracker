@@ -102,7 +102,8 @@ export default function BaselineChart() {
     VAPE: '#EAB308',
     DFDV: '#059669',
     TRON: '#DC2626',
-    VERB: '#2563EB'
+    VERB: '#2563EB',
+    UPXI: '#06B6D4'
   };
 
   const cryptoColors: { [key: string]: string } = {

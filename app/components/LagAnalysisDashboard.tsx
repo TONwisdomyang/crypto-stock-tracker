@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useDataFetch, usePreloadData } from '../utils/useDataFetch';
 import { fallbackHistoricalData } from '../utils/fallbackData';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, ReferenceLine } from 'recharts';
+import SOLSectorView from './SOLSectorView';
 
 interface WeeklyData {
   week: string;
@@ -41,7 +42,8 @@ export default function LagAnalysisDashboard() {
     { symbol: 'SBET', name: 'SharpLink Gaming', coin: 'ETH' },
     { symbol: 'DFDV', name: 'DeFi Development', coin: 'SOL' },
     { symbol: 'VERB', name: 'VERB Technology', coin: 'TON' },
-    { symbol: 'HYPD', name: 'Hyperion DeFi', coin: 'HYPE' }
+    { symbol: 'HYPD', name: 'Hyperion DeFi', coin: 'HYPE' },
+    { symbol: 'UPXI', name: 'UPXI Corp', coin: 'SOL' }
   ];
 
   // Get the base URL for data fetching (handles both dev and production)
@@ -535,10 +537,13 @@ export default function LagAnalysisDashboard() {
 
           {/* 右側：主圖表 */}
           <div className="lg:col-span-3">
-            <div className="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-              <h3 className="text-lg font-semibold text-white mb-6">
-                {selectedTicker} vs {getCurrentTicker()?.coin} 滯後效應分析
-              </h3>
+            {(selectedTicker === 'DFDV' || selectedTicker === 'UPXI') ? (
+              <SOLSectorView />
+            ) : (
+              <div className="bg-gradient-to-br from-slate-800/50 to-slate-700/50 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold text-white mb-6">
+                  {selectedTicker} vs {getCurrentTicker()?.coin} 滯後效應分析
+                </h3>
               
               <div className="h-96 mb-4">
                 {weeklyData.length > 0 ? (
@@ -610,6 +615,7 @@ export default function LagAnalysisDashboard() {
                 </div>
               </div>
             </div>
+            )}
           </div>
         </div>
       </div>
