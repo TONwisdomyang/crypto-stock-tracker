@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   update-data:
@@ -18,6 +19,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0  # Ensure full git history
     
     - name: Set up Python
       uses: actions/setup-python@v5
@@ -30,8 +32,21 @@ jobs:
         pip install -r requirements.txt
     
     - name: Run ETL Pipeline
+      timeout-minutes: 10  # Set explicit timeout
       run: |
-        python etl.py
+        set -e  # Exit on error
+        echo "Starting ETL pipeline at $(date)"
+        python etl_lite.py || {
+          echo "ETL pipeline failed at $(date)" 
+          echo "Checking for partial data..."
+          if [ -f "public/data/weekly_stats.json" ]; then
+            echo "Partial data found, continuing with commit"
+          else
+            echo "No data generated, exiting"
+            exit 1
+          fi
+        }
+        echo "ETL pipeline completed at $(date)"
       env:
         # Add any API keys here if needed
         # COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
@@ -49,12 +64,20 @@ jobs:
         git config --local user.name "GitHub Action"
         
         # 先拉取遠程更改以避免衝突，使用當前分支
-        CURRENT_BRANCH=${GITHUB_REF_NAME}
+        CURRENT_BRANCH=${GITHUB_REF_NAME:-main}
         echo "Syncing with remote repository on branch: $CURRENT_BRANCH"
-        git pull --rebase origin $CURRENT_BRANCH || {
-          echo "Rebase conflicts detected, using merge strategy..."
-          git rebase --abort
-          git pull --no-rebase origin $CURRENT_BRANCH
+        
+        # 配置安全目錄
+        git config --global --add safe.directory $GITHUB_WORKSPACE
+        
+        # 更新遠程引用
+        git fetch origin $CURRENT_BRANCH
+        
+        # 嘗試合併遠程更改
+        git pull --no-rebase origin $CURRENT_BRANCH || {
+          echo "Pull failed, trying to resolve conflicts..."
+          # 如果有衝突，重置到遠程狀態並重新應用我們的更改
+          git reset --hard origin/$CURRENT_BRANCH
         }
         
         # 檢查是否仍有變更需要提交

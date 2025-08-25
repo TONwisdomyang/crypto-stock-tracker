@@ -1,0 +1,66 @@
+# Page snapshot
+
+```yaml
+- main:
+  - heading "底層代幣生態分析" [level=1]
+  - paragraph: 追蹤代幣價格與相關公司股價的關聯性
+  - paragraph: 當前週期
+  - paragraph: 8/8 ~ 8/15
+  - paragraph: SOL 表現
+  - paragraph: +9.90%
+  - heading "選擇代幣" [level=3]
+  - button "BTC logo BTC Bitcoin 3家 3.65% MSTR • MARA • CEP 722.9K 持有":
+    - img "BTC logo"
+    - text: BTC Bitcoin 3家 3.65% MSTR • MARA • CEP 722.9K 持有
+  - button "ETH logo ETH Ethereum 2家 0.642% SBET • BMNR 771.9K 持有":
+    - img "ETH logo"
+    - text: ETH Ethereum 2家 0.642% SBET • BMNR 771.9K 持有
+  - button "BNB logo BNB BNB 1家 0.032% BNC 50.0K 持有":
+    - img "BNB logo"
+    - text: BNB BNB 1家 0.032% BNC 50.0K 持有
+  - button "SOL logo SOL Solana 2家 0.456% DFDV • UPXI 2.1M 持有 當前分析目標":
+    - img "SOL logo"
+    - text: SOL Solana 2家 0.456% DFDV • UPXI 2.1M 持有 當前分析目標
+  - button "TON logo TON The Open Network 1家 0.0039% VERB 100.0K 持有":
+    - img "TON logo"
+    - text: TON The Open Network 1家 0.0039% VERB 100.0K 持有
+  - button "HYPE logo HYPE Hyperliquid 1家 0.460% HYPD 1.5M 持有":
+    - img "HYPE logo"
+    - text: HYPE Hyperliquid 1家 0.460% HYPD 1.5M 持有
+  - img "SOL logo"
+  - paragraph: 代幣價格
+  - paragraph: $192.76
+  - text: +9.90%
+  - paragraph: 供應量佔比
+  - paragraph: 0.456%
+  - text: 0.456%
+  - paragraph: 2.1M 持有量
+  - paragraph: 追蹤公司
+  - paragraph: 2家
+  - paragraph: 5週歷史數據
+  - heading "Solana (SOL) 生態追蹤" [level=3]
+  - paragraph: 2家公司持有 • 5週數據趨勢
+  - text: "持有 SOL 的公司組合 合計: 2.1M (0.456%) DFDV"
+  - paragraph: DeFi Development
+  - paragraph: "持有: 1.3M"
+  - paragraph: +19.20%
+  - paragraph: $18.69
+  - text: UPXI
+  - paragraph: UPXI Corp
+  - paragraph: "持有: 850.0K"
+  - paragraph: +21.69%
+  - paragraph: $7.35
+  - img: 7/11 ~ 7/18 7/18 ~ 7/25 7/25 ~ 8/1 8/1 ~ 8/8 8/8 ~ 8/15 -40% -20% 0% 20% 40%
+  - list:
+    - listitem:
+      - img
+      - text: SOL 幣價變化%
+    - listitem:
+      - img
+      - text: DFDV 股價變化%
+    - listitem:
+      - img
+      - text: UPXI 股價變化%
+  - text: SOL 底層代幣 DFDV (DeFi Development) UPXI (UPXI Corp)
+- alert
+```
