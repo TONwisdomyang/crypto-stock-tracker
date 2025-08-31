@@ -116,6 +116,9 @@ class WeeklyUpdate:
             with open(self.historical_file, 'w', encoding='utf-8') as f:
                 json.dump(historical_data, f, indent=2, ensure_ascii=False)
                 
+            # 🔥 CRITICAL: 生成前端需要的 weekly_stats.json 格式
+            self.generate_weekly_stats_format(week_key, last_friday, companies, holdings)
+                
             logger.info(f"🎉 成功更新本週數據 {week_key}")
             logger.info(f"總週數: {len(historical_data['data'])}")
             return True
@@ -123,6 +126,60 @@ class WeeklyUpdate:
         else:
             logger.warning(f"只獲取了 {success_count}/{len(holdings)} 家公司的數據，不更新")
             return False
+            
+    def generate_weekly_stats_format(self, week_key, last_friday, companies, holdings):
+        """生成前端需要的 weekly_stats.json 格式"""
+        logger.info("生成前端數據格式...")
+        
+        # 轉換為前端期望的格式
+        frontend_data = []
+        
+        for ticker, company_data in companies.items():
+            holding_info = holdings[ticker]
+            
+            # 計算持有量佔比 (簡化計算)
+            supply_percent = holding_info.get('holding_qty', 0) / 1000000  # 簡化計算
+            
+            frontend_data.append({
+                "ticker": ticker,
+                "company_name": company_data["company_name"],
+                "stock_close": company_data["stock_price"],
+                "stock_pct_change": 0,  # 週更新時暫時設為0，需要歷史比較才能計算
+                "coin": company_data["coin"],
+                "coin_close": company_data["coin_price"],
+                "coin_pct_change": 0,   # 週更新時暫時設為0，需要歷史比較才能計算
+                "holding_qty": holding_info.get('holding_qty', 0),
+                "holding_pct_of_supply": supply_percent,
+                "market_cap": 0  # 暫時設為0
+            })
+        
+        # 生成週期結束日期 (週五)
+        week_end_str = last_friday.strftime('%Y-%m-%d')
+        
+        weekly_stats = {
+            "week_end": week_end_str,
+            "generated_at": datetime.now().isoformat(),
+            "data": frontend_data
+        }
+        
+        # 保存到前端數據文件
+        weekly_file = self.data_dir / "weekly_stats.json"
+        with open(weekly_file, 'w', encoding='utf-8') as f:
+            json.dump(weekly_stats, f, indent=2, ensure_ascii=False)
+            
+        # 生成摘要文件
+        summary = {
+            "last_updated": weekly_stats["generated_at"],
+            "companies_count": len(frontend_data),
+            "week_end": week_end_str
+        }
+        
+        summary_file = self.data_dir / "summary.json"
+        with open(summary_file, 'w', encoding='utf-8') as f:
+            json.dump(summary, f, indent=2, ensure_ascii=False)
+            
+        logger.info(f"✅ 生成前端數據文件: {weekly_file}")
+        logger.info(f"✅ 生成摘要文件: {summary_file}")
 
 def main():
     """主函數"""

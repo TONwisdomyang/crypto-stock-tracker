@@ -2,8 +2,12 @@ name: Update Crypto-Stock Data
 
 on:
   schedule:
-    # Run every Sunday at 23:59 UTC (weekly update)
-    - cron: '59 23 * * 0'
+    # 🔥 CRITICAL: US Market Close Friday + 5min (EDT Summer Time)
+    - cron: '5 20 * * 5'   # Friday 4:05 PM EDT = Friday 8:05 PM UTC (Mar-Nov)
+    # 🔥 CRITICAL: US Market Close Friday + 5min (EST Standard Time)  
+    - cron: '5 21 * * 5'   # Friday 4:05 PM EST = Friday 9:05 PM UTC (Nov-Mar)
+    # Backup: Saturday morning in case primary fails
+    - cron: '0 6 * * 6'    # Saturday 6:00 AM UTC (backup run)
   workflow_dispatch: # Allow manual triggering
 
 permissions:
@@ -31,13 +35,14 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    - name: Run ETL Pipeline
-      timeout-minutes: 10  # Set explicit timeout
+    - name: Run Weekly Update Pipeline  
+      timeout-minutes: 5   # Reduced timeout for weekly-only updates
       run: |
         set -e  # Exit on error
-        echo "Starting ETL pipeline at $(date)"
-        python etl_lite.py || {
-          echo "ETL pipeline failed at $(date)" 
+        echo "Starting Weekly Update pipeline at $(date)"
+        echo "🎯 CRITICAL: Using weekly_update.py for incremental updates only"
+        python weekly_update.py || {
+          echo "Weekly update failed at $(date)" 
           echo "Checking for partial data..."
           if [ -f "public/data/weekly_stats.json" ]; then
             echo "Partial data found, continuing with commit"
@@ -46,7 +51,7 @@ jobs:
             exit 1
           fi
         }
-        echo "ETL pipeline completed at $(date)"
+        echo "Weekly update completed at $(date)"
       env:
         # Add any API keys here if needed
         # COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
