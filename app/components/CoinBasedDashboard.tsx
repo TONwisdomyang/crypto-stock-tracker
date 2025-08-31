@@ -140,9 +140,10 @@ export default function CoinBasedDashboard() {
       try {
         setLoading(true);
         
-        // 並行載入歷史數據和持有量數據
-        const [historyResponse, holdingsResponse] = await Promise.all([
+        // 並行載入歷史數據、週期數據和持有量數據
+        const [historyResponse, weeklyResponse, holdingsResponse] = await Promise.all([
           fetch('/data/complete_historical_baseline.json'),
+          fetch('/data/weekly_stats.json'),
           fetch('/data/holdings.json')
         ]);
         
@@ -150,11 +151,16 @@ export default function CoinBasedDashboard() {
           throw new Error(`HTTP error! status: ${historyResponse.status}`);
         }
         
+        if (!weeklyResponse.ok) {
+          throw new Error(`Weekly data error! status: ${weeklyResponse.status}`);
+        }
+        
         if (!holdingsResponse.ok) {
           throw new Error(`Holdings data error! status: ${holdingsResponse.status}`);
         }
         
         const data = await historyResponse.json();
+        const weeklyData = await weeklyResponse.json();
         const holdings = await holdingsResponse.json();
         
         setHoldingsData(holdings);
@@ -163,6 +169,13 @@ export default function CoinBasedDashboard() {
         if (!selectedGroup) {
           throw new Error(`Coin group not found: ${selectedCoin}`);
         }
+
+        // 獲取週數的輔助函數
+        const getWeekNumber = (date: Date): number => {
+          const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+          const pastDaysOfYear = (date.getTime() - firstDayOfYear.getTime()) / 86400000;
+          return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+        };
 
         // 格式化週期顯示 - 使用與其他組件相同的邏輯
         const formatWeekRange = (date: string) => {
@@ -181,8 +194,38 @@ export default function CoinBasedDashboard() {
           }
         };
 
+        // 🔥 CRITICAL: 合併歷史數據和最新週期數據
+        const mergedData = { ...data.data };
+        
+        // 如果weekly_stats.json有更新的數據，添加到歷史數據中
+        if (weeklyData && weeklyData.week_end) {
+          const weekEndDate = new Date(weeklyData.week_end);
+          const year = weekEndDate.getFullYear();
+          const weekNum = getWeekNumber(weekEndDate);
+          const weekKey = `${year}-W${weekNum.toString().padStart(2, '0')}`;
+          
+          // 轉換weekly_stats格式為歷史數據格式
+          const weeklyCompanies: { [key: string]: any } = {};
+          weeklyData.data.forEach((company: any) => {
+            weeklyCompanies[company.ticker] = {
+              company_name: company.company_name,
+              ticker_used: company.ticker,
+              stock_price: company.stock_close,
+              coin: company.coin,
+              coin_price: company.coin_close,
+              coin_id: selectedGroup?.coin_id || ''
+            };
+          });
+          
+          mergedData[weekKey] = {
+            baseline_date: weeklyData.week_end,
+            week_start: `${weeklyData.week_end}T16:00:00-04:00`,
+            companies: weeklyCompanies
+          };
+        }
+
         const transformedData: CoinData[] = [];
-        const sortedWeeks = Object.keys(data.data).sort((a, b) => {
+        const sortedWeeks = Object.keys(mergedData).sort((a, b) => {
           const weekA = parseInt(a.split('-W')[1]);
           const weekB = parseInt(b.split('-W')[1]);
           return weekA - weekB;
@@ -192,7 +235,7 @@ export default function CoinBasedDashboard() {
         const previousCompanyPrices: { [key: string]: number } = {};
 
         sortedWeeks.forEach((week, index) => {
-          const weekData = data.data[week];
+          const weekData = mergedData[week];
           
           // 從第一個公司獲取該代幣的價格
           const firstCompany = selectedGroup.companies[0];
