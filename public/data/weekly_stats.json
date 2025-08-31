@@ -1,6 +1,6 @@
 {
   "week_end": "2025-08-29",
-  "generated_at": "2025-08-31T22:11:07.947806",
+  "generated_at": "2025-08-31T22:38:51.918758",
   "data": [
     {
       "ticker": "MSTR",
@@ -8,8 +8,8 @@
       "stock_close": 334.41,
       "stock_pct_change": -1.31,
       "coin": "BTC",
-      "coin_close": 108297,
-      "coin_pct_change": -0.19,
+      "coin_close": 108450,
+      "coin_pct_change": -0.11,
       "holding_qty": 628791,
       "holding_pct_of_supply": 3.1757,
       "market_cap": 0
@@ -20,8 +20,8 @@
       "stock_close": 17.82,
       "stock_pct_change": -3.47,
       "coin": "ETH",
-      "coin_close": 4456.93,
-      "coin_pct_change": 2.32,
+      "coin_close": 4466.6,
+      "coin_pct_change": 2.61,
       "holding_qty": 521939,
       "holding_pct_of_supply": 0.4335,
       "market_cap": 0
@@ -32,8 +32,8 @@
       "stock_close": 21.02,
       "stock_pct_change": -1.31,
       "coin": "BNB",
-      "coin_close": 859.87,
-      "coin_pct_change": 0.64,
+      "coin_close": 860.92,
+      "coin_pct_change": 0.58,
       "holding_qty": 50000,
       "holding_pct_of_supply": 0.0325,
       "market_cap": 0
@@ -44,8 +44,8 @@
       "stock_close": 16.02,
       "stock_pct_change": -2.73,
       "coin": "SOL",
-      "coin_close": 201.83,
-      "coin_pct_change": 1.38,
+      "coin_close": 202.98,
+      "coin_pct_change": 1.78,
       "holding_qty": 1293562,
       "holding_pct_of_supply": 0.2723,
       "market_cap": 0
@@ -56,8 +56,8 @@
       "stock_close": 6.1,
       "stock_pct_change": -7.99,
       "coin": "HYPE",
-      "coin_close": 44.2,
-      "coin_pct_change": 1.36,
+      "coin_close": 44.37,
+      "coin_pct_change": 1.79,
       "holding_qty": 1535772,
       "holding_pct_of_supply": 0.1536,
       "market_cap": 0
@@ -68,8 +68,8 @@
       "stock_close": 14.5,
       "stock_pct_change": 2.76,
       "coin": "TON",
-      "coin_close": 3.14,
-      "coin_pct_change": 0.85,
+      "coin_close": 6.5,
+      "coin_pct_change": 0,
       "holding_qty": 100000,
       "holding_pct_of_supply": 0.002,
       "market_cap": 0
@@ -80,8 +80,8 @@
       "stock_close": 7.23,
       "stock_pct_change": -10.63,
       "coin": "SOL",
-      "coin_close": 201.83,
-      "coin_pct_change": 1.38,
+      "coin_close": 202.98,
+      "coin_pct_change": 1.78,
       "holding_qty": 850000,
       "holding_pct_of_supply": 0.1789,
       "market_cap": 0
@@ -92,8 +92,8 @@
       "stock_close": 43.62,
       "stock_pct_change": -4.28,
       "coin": "ETH",
-      "coin_close": 4456.93,
-      "coin_pct_change": 2.32,
+      "coin_close": 4466.6,
+      "coin_pct_change": 2.61,
       "holding_qty": 250000,
       "holding_pct_of_supply": 0.2076,
       "market_cap": 0
@@ -104,8 +104,8 @@
       "stock_close": 15.98,
       "stock_pct_change": 0.13,
       "coin": "BTC",
-      "coin_close": 108297,
-      "coin_pct_change": -0.19,
+      "coin_close": 108450,
+      "coin_pct_change": -0.11,
       "holding_qty": 50639,
       "holding_pct_of_supply": 0.2558,
       "market_cap": 0
@@ -116,8 +116,8 @@
       "stock_close": 23.03,
       "stock_pct_change": -1.58,
       "coin": "BTC",
-      "coin_close": 108297,
-      "coin_pct_change": -0.19,
+      "coin_close": 108450,
+      "coin_pct_change": -0.11,
       "holding_qty": 43514,
       "holding_pct_of_supply": 0.2198,
       "market_cap": 0
