@@ -1,13 +1,8 @@
 {
-  "generated_at": "2025-11-03T09:34:22.377280+08:00",
+  "generated_at": "2025-11-10T09:35:26.601581+08:00",
   "timezone": "Asia/Taipei",
   "baseline_time": "08:00",
   "data": {
-    "2025-W37": {
-      "week_start": "2025-09-15T08:00:00+08:00",
-      "baseline_date": "2025-09-15",
-      "companies": {}
-    },
     "2025-W38": {
       "week_start": "2025-09-22T08:00:00+08:00",
       "baseline_date": "2025-09-22",
@@ -41,6 +36,11 @@
     "2025-W44": {
       "week_start": "2025-11-03T08:00:00+08:00",
       "baseline_date": "2025-11-03",
+      "companies": {}
+    },
+    "2025-W45": {
+      "week_start": "2025-11-10T08:00:00+08:00",
+      "baseline_date": "2025-11-10",
       "companies": {}
     }
   }
