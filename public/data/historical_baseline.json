@@ -1,13 +1,8 @@
 {
-  "generated_at": "2026-08-17T09:16:04.443654+08:00",
+  "generated_at": "2026-08-24T09:17:29.811728+08:00",
   "timezone": "Asia/Taipei",
   "baseline_time": "08:00",
   "data": {
-    "2026-W26": {
-      "week_start": "2026-06-29T08:00:00+08:00",
-      "baseline_date": "2026-06-29",
-      "companies": {}
-    },
     "2026-W27": {
       "week_start": "2026-07-06T08:00:00+08:00",
       "baseline_date": "2026-07-06",
@@ -41,6 +36,11 @@
     "2026-W33": {
       "week_start": "2026-08-17T08:00:00+08:00",
       "baseline_date": "2026-08-17",
+      "companies": {}
+    },
+    "2026-W34": {
+      "week_start": "2026-08-24T08:00:00+08:00",
+      "baseline_date": "2026-08-24",
       "companies": {}
     }
   }
